@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Registro</title>
+  </head>
+  <body>
+    <h1>Registro en Nuestra Tienda</h1>
+    <form>
+      <p>
+        <label for="nombre">Nombre de usuario</label>
+        <br>
+        <input type="text" id="nomrbe" name="nombre" placeholder="Ej: Luis" autofocus required>
+      </p>
+      <p>
+        <label for="email">Email</label>
+        <br>
+        <input type="email" name="email" id="email" placeholder="Ej: luis@gmail.com" required>
+      </p>
+      <p>
+        <label for="edad">Edad</label>
+        <br>
+        <input type="number" name="edad" ID="edad" min="1" placeholder="Ej: 21" required>
+      </p>
+      <p>
+        <label for="fechaNacimiento">Fecha de Nacimiento</label>
+        <br>
+        <input type="date" name="fechaNacimiento" ID="fechaNacimiento">
+      </p>
+      <p>
+        <label for="genero">Genero</label>
+        <br>
+        <input type="radio" name="genero">Masculino
+        <br>
+        <input type="radio" name="genero">Femenino
+      </p>
+      <p>
+        <label for="recomendadoPor">Recomendado Por: </label>
+        <br>
+        <select name="recomendadoPor">
+          <option value="google">Google</option>
+          <option value="amigos">Amigos</option>
+          <option value="redesSociales">Redes Sociales</option>
+        </select>
+      </p>
+      <p>
+        <label for="comentarios">Comentarios: </label>
+        <br>
+        <textarea name="comentarios" rows="8" cols="80"></textarea>
+      </p>
+      <p>
+        <label for="terminosCondiciones">Acepto términos y condiciones</label>
+        <br>
+        <input type="checkbox" name="terminosCondiciones" value="accept">
+      </p>
+      <p>
+        <input type="submit" name="registrar" value="registrar">
+      </p>
+    </form>
+  </body>
+</html>
