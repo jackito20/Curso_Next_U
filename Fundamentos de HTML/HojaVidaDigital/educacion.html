@@ -17,14 +17,14 @@
       <h3>Barcelona - Venezuela 22/06/1988</h3>
     </header>
     <nav>
-      <a href="#">Inicio</a>
+      <a href="index.html">Inicio</a>
       <a href="#">Educación</a>
       <a href="#">Experiencia</a>
     </nav>
     <section>
       <article id="educacion">
         <h2>Educación</h2>
-        <table border="1">
+        <table border="1" id="educacionTable">
           <thead>
             <tr>
               <th>Año</th>
@@ -51,15 +51,29 @@
       </article>
     </section>
     <section>
-      <form id="agregarEstudios">
+      <form id="agregarEstudios" name="agregarEstudios">
         <fieldset>
           <legend>Agregar Estudios</legend>
-          <label for="year">Año: </label>
-          <select name="year">
-
-          </select>
+          <p>
+            <label for="year">Año: </label>
+            <select name="year">
+              <option value="2018">2018</option>
+              <option value="2017">2017</option>
+              <option value="2016">2016</option>
+              <option value="2015">2015</option>
+              <option value="2014">2014</option>
+            </select>
+          </p>
+          <p>
+            <label for="institucion">Institución: </label>
+            <input type="text" name="institucion" id="institucion" placeholder="Institución">
+          </p>
+          <p>
+            <label for="lugar">Lugar: </label>
+            <textarea name="lugar" id="lugar" rows="2" cols="50"></textarea>
+          </p>
+          <input type="submit" name="enviar" value="Enviar">
         </fieldset>
-
       </form>
     </section>
     <footer>
