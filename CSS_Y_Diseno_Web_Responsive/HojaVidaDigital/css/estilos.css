@@ -1,0 +1,52 @@
+body{
+  background-color: gray;
+}
+
+footer{
+  margin-top: 20px;
+}
+
+img{
+  border-radius: 10px;
+}
+#contenedor{
+  font-family: helvetica;
+  font-size: 16px;
+}
+#encabezado{
+  display: block;;
+  margin: 0 auto;
+}
+.itemIndice{
+  list-style-type: upper-roman;;
+}
+.enlace{
+  color: red;
+}
+a[href]{
+  color: red;
+}
+img[src$='.jpg']{
+  border-radius: 50px;
+}
+image[href$='.svg']{
+  border: 1px solid black;
+  border-radius: 5px;
+}
+*{
+  margin: 1vh 1vw;
+}
+
+h1 + h2{
+    text-decoration: underline;
+}
+
+h2 ~ p{
+  text-align: justify;
+}
+article>h2{
+  text-decoration: underline;
+}
+ol li{
+  list-style-type: circle;
+}

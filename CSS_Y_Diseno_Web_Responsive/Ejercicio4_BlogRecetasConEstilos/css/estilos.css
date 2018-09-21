@@ -1,0 +1,24 @@
+body{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-family: verdana;
+}
+
+.resaltado{
+  background: yellow;
+}
+#menu-principal{
+  padding: 10px 0px;
+}
+.titulo{
+  background: aliceblue;
+  text-align: center;
+  padding: 10px;
+}
+footer{
+  border-top: solid 1px black;
+  padding-top: 10px;
+  text-align: center;;
+}
