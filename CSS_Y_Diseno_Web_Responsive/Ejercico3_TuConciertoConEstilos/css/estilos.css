@@ -1,0 +1,29 @@
+body p{
+  color: green;
+}
+
+body{
+  background-color: black;
+  color: white !important;
+  font-family: verdana;
+}
+
+h1{
+  font-family: arial;
+}
+
+a{
+  color: white;
+}
+
+div{
+  margin-top: 10px;
+  margin-left: 20px;
+}
+body{
+  color: red;
+}
+
+p{
+  color: blue;
+}
