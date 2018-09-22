@@ -24,7 +24,7 @@ img{
   color: red;
 }
 a[href]{
-  color: red;
+  color: black;
 }
 img[src$='.jpg']{
   border-radius: 50px;
@@ -49,4 +49,25 @@ article>h2{
 }
 ol li{
   list-style-type: circle;
+}
+
+a[href$='.html']:visited{
+  color: red;
+}
+
+a:hover{
+  color:green;
+}
+h2:first-child{
+  text-decoration-color: blue;
+}
+input:focus{
+  width: 160px;
+  height: 140px;
+}
+p::first-letter{
+  text-transform: capitalize;
+}
+p::first-line{
+  font-size: 32px;
 }
