@@ -1,0 +1,55 @@
+body{
+  width: 70%;
+  align: center;
+  font-family: Verdana;
+  margin-left: 15%;
+}
+header img{
+  display: inline;
+}
+header h1{
+  display: inline;
+  padding: 10px;
+}
+/*section aside{
+  width: 30%;
+  float: left;
+}*/
+section article{
+  /*width: 70%;*/
+  float: right;
+}
+article p{
+  float: left;
+  display: block;
+  width: 80%;
+  text-align: justify;
+  padding: 1%;
+}
+article img{
+  float: right;
+  padding: 1%;
+}
+footer{
+  clear: both;
+  text-align: center;
+  border-top: 1px solid black;
+}
+
+#menu-principal ul {
+float: left;
+width: 200px;
+padding: 0;
+margin: 0;
+}
+
+#menu-principal ul li{
+list-style-type: none;
+padding: 10px;
+}
+
+#contenido{
+  margin-left: 200px;
+  padding: 10px;
+	background-color: F9F7F3;
+}
