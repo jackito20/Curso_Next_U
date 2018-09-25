@@ -1,0 +1,32 @@
+@@font-face {
+  font-family: Lato;
+  src: url('../fuentes/Lato-Regular.ttf');
+}
+body{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-family: Lora;
+}
+
+.resaltado{
+  background: yellow;
+}
+#menu-principal{
+  padding: 10px 0px;
+  font-style: italic;
+  font-family: Lato;
+}
+.titulo{
+  background: aliceblue;
+  text-align: center;
+  padding: 10px;
+  font-family: Lato;
+  font-variant: small-caps;
+}
+footer{
+  border-top: solid 1px black;
+  padding-top: 10px;
+  text-align: center;;
+}
