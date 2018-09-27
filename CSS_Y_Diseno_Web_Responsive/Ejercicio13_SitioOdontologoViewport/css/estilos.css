@@ -1,0 +1,42 @@
+body {
+	font-family: Verdana;
+	width: 90%;
+	margin-left: 5%;
+	font-size: 3vw;
+}
+
+header {
+	/*padding: 3px 10px;
+	margin-bottom: 5px;*/
+	background: -webkit-linear-gradient(left, #1f47a8, #55dedf); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #1f47a8, #55dedf); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #1f47a8, #55dedf); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #1f47a8, #55dedf); /* Standard syntax */
+	/*border-radius: 10px;*/
+
+	padding: 1vh 1vw;
+	border-radius: 1vh;
+	margin-bottom: 1vh;
+}
+
+header h1 {
+	padding-left: 10px;
+	margin: 1%;
+	font-size: 1.5em;
+}
+
+footer {
+	font-size: 8px;
+	border-top: solid 2px #1f47a8;
+	/*padding-top: 10px;
+	margin-top: 15px;*/
+	text-align: center;
+	font-size: 0.8em;
+
+	padding-top: 1vw;
+	margin-top: 1vw;
+}
+
+#contenido{
+	margin: 1%;
+}
