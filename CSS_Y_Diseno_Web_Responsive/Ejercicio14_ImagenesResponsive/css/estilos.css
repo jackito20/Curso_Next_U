@@ -1,0 +1,47 @@
+body{
+  font-family: arial;
+  font-size: 1vw;
+}
+
+figcaption{
+  text-align: center;
+  font-size: 2vw;
+  margin: 1vw;
+  padding: 1vw;
+}
+
+#content1{
+  border-bottom: 1px solid black;
+}
+
+section h2{
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.adaptativa-porcentaje-1{
+  width: 90%;
+  padding-left: 10%;
+}
+
+.adaptativa-porcentaje-2{
+  width: 70%;
+  padding-left: 15%;
+}
+
+.adaptativa-porcentaje-3{
+  width: 50%;
+  padding-left: 25%;
+}
+
+.adaptativa-porcentaje-4{
+  width: 20%;
+  padding-left: 40%;
+}
+
+footer{
+  margin: 1em;
+  padding-top: 0.1em;
+  border-top: 1px solid blue;
+  text-align: center;
+}
