@@ -1,0 +1,89 @@
+body {
+	font-family: Indie Flower;
+}
+
+#wrapper, header
+{
+	width: 960px;
+  margin: 0 auto;
+
+}
+
+header{
+  background-color: #E6EBE0;
+}
+
+h1, h2{
+  margin: 0;
+}
+
+header, #wrapper{
+  flex-flow: row wrap;
+}
+
+#descripcion{
+  width: 100%;
+  background-color: #F4F1BB;
+}
+
+#crea{
+  width: 33.3%;
+  background-color: #9BC1BC;
+}
+
+#juega{
+  width: 33.3%;
+  background-color: #36C9C6;
+}
+
+#aprende{
+  width: 33.3%;
+  background-color: #ED6A5A;
+}
+
+#wrapper div{
+  float:left;
+}
+
+@media screen and (max-width: 960px){
+
+	#wrapper
+	{
+		width: 90%;
+		margin: 0 auto;
+	}
+  header
+	{
+	   width:90%;
+	}
+}
+
+@media screen and (max-width: 640px){
+
+	#wrapper
+	{
+		width: 100%;
+		margin: 0 auto;
+	}
+  #descripcion, #crea, #juega, #aprende
+	{
+	   width: 50%;
+	}
+	header
+	{
+	   width:100%;
+	}
+}
+
+@media screen and (max-width: 480px){
+
+#wrapper
+	{
+		width: 100%;
+		margin: 0 auto;
+	}
+	#descripcion, #crea, #juega, #aprende, header
+	{
+	   width: 100%;
+	}
+}
