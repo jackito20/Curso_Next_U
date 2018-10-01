@@ -1,0 +1,43 @@
+body{
+  font-family: sans-serif;
+  width: 90%;
+  margin-left: 5%;
+}
+header{
+  border-radius: 10px;
+  background-color: #009688;
+  padding: 0.5vw;
+}
+article{
+  margin: 100px;
+  text-align: center;
+}
+figure img {
+	width: 420px;
+}
+
+#imagen1 img{
+  transition: border 1s;
+}
+
+#imagen1 img:hover{
+  border: 5px solid black;
+}
+
+#imagen2 img{
+  opacity: 0.1;
+  transition: opacity 1s;
+}
+
+#imagen2 img:hover{
+  opacity: 1;
+}
+
+#imagen3 img{
+  transition: width 1s;
+}
+
+#imagen3 img:hover{
+  /*transform: scale(1.25,1.25);*/
+  width: 60%;
+}
