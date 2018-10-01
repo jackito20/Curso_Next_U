@@ -1,0 +1,82 @@
+body{
+  font-family: 'Dancing Script', cursive;
+  background-color: #02010a;
+}
+
+.contenido{
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+header{
+  background-color: #5b7989;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  display: flex;
+  color: white;
+}
+.titulo{
+  text-shadow: 2px 2px #02010a;
+  width: 70%;
+  padding-left: 1em;
+}
+.menu a{
+  text-decoration: none;
+  color: white;
+}
+.menu{
+  width: 30%;
+  text-align: center;
+  padding-top: 1.90em;
+  word-spacing: 20px;
+}
+
+section{
+  font-weight: bold;
+}
+
+.imagenPrincipal{
+  background-color: #82c3a6;
+  width: 100%;
+}
+
+.imagenPrincipal img{
+  width: 95%;
+  padding-left: 2.5%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.imagenSecundaria{
+  background-color: #d5c75f;
+  display: flex;
+}
+.imagenS1, .imagenS2{
+  width: 50%;
+  text-align: center;
+  position: relative;
+}
+.imagenS2 figure{
+    position: absolute;
+    bottom: 0;
+}
+.imagenS1 img, .imagenS2 img{
+  width: 90%;
+  border: 1px solid black;
+  box-shadow: 2px 2px black;
+}
+
+footer{
+  background-color: #C6d5c5;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  width: 100%;
+}
+
+footer div{
+  width: 25%;
+  padding: 1em;
+}
+footer div img{
+  width: 8%;
+}
