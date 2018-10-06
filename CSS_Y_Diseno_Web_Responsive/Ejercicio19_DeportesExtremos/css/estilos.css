@@ -1,0 +1,46 @@
+body{
+  font-family: sans-serif;
+}
+
+header{
+  background-color: green;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+figure{
+  text-align: center;
+  margin: 100px;
+  padding-top: 50px;
+  padding-bottom: : 50px;
+}
+
+img{
+  width: 420px;
+
+}
+
+.imagen1{
+  transform: perspective(2000px);
+  -webkit-perspective: 2000px;
+}
+.imagen1 img{
+  transform: rotateY(40deg);
+}
+
+.imagen2{
+  transform: perspective(3000px);
+  -webkit-perspective: 3000px;
+}
+.imagen2 img{
+  transform: rotateY(-30deg);
+}
+
+.imagen3{
+  transform: perspective(100px);
+  -webkit-perspective: 100px;
+}
+
+.imagen3 img{
+  transform: rotateX(40deg);
+}
