@@ -1,0 +1,60 @@
+body{
+  background-color: black;
+  font-family: serif;
+  color: white;
+  text-align: center;
+  width: 95%;
+  margin-left: 2.5%;
+}
+img{
+  width: 250px;
+  border: 2px solid white;
+}
+
+section{
+  display: flex;
+  flex-direction: column;
+}
+
+.linea {
+	display: flex;
+	flex-direction: row;
+}
+.linea div{
+  margin: 10px;
+  width: 50%;
+}
+footer{
+  margin: 2% 0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.foto1 img{
+  transition: border 1s;
+}
+.foto1 img:hover{
+  border: 5px solid white;
+}
+
+.foto3{
+  padding: 5px;;
+  transition: background 1s;
+}
+.foto3:hover{
+  background-color: white;
+}
+
+.foto2 img{
+  animation: animacion 3s infinite;
+}
+
+@-webkit-keyframes animacion{
+  50%{
+    transform: translateX(1000px);
+  }
+  100%{
+    transform: translateX(0px);
+  }
+}

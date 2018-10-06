@@ -1,0 +1,38 @@
+.galeria{
+  background-color: #d5c75f;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.galeria div{
+  width: 33%;
+  padding: 2vw 0;
+}
+.galeria img{
+    width: 80%;
+    margin: 0 10%;
+    border: 2px solid #02010a;
+    box-shadow: 2px 2px black;
+}
+
+@media (max-width:899px){
+  .galeria div{
+    width: 100%;
+  }
+}
+
+.galeria div:first-child img{
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+}
+
+.galeria div:nth-child(even) img{
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.galeria div:nth-child(3) img{
+  -webkit-filter: sepia(90%);
+  filter: sepia(90%);
+}
