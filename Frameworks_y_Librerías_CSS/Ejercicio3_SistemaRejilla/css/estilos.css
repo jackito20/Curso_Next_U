@@ -35,4 +35,13 @@ nav{
   .rigth-column{
     display: none;
   }
+  .movies-row{
+    min-height: 250px;
+  }
+  .movies-column{
+    min-height: 230px;
+  }
+  .jumbotron{
+    min-height: 350px;
+  }
 }
