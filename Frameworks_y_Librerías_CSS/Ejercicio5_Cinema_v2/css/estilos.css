@@ -1,0 +1,130 @@
+.container{
+  margin-top: 64px;
+}
+.cinema-body{
+  background: url(../img/fondo.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-img{
+  height: 100px;
+}
+nav{
+  min-height: 10%;
+  background-color: rgb(0, 0, 0, 0.95);
+}
+.welcome-title{
+  color: white;
+  margin-right: 10px;
+}
+.jumbotron-img{
+  margin-bottom: 20px;
+}
+
+.jumbotron{
+  min-height: 500px;
+  background: url(../img/cartelera.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 0px;
+  border-radius: 0px !important;
+}
+.jumbotron-text{
+  color: white;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.redes-sociales{
+  margin-top: 20px;
+}
+.img-social{
+  width: 40px;
+  height: 40px;
+}
+.titulo-cartelera{
+  min-height: 45px;
+  background-color: rgb(0, 0, 0, 0.95);
+}
+.titulo-text{
+  font-size: 18px;
+  padding: 10px;
+  color: white;
+  font-weight: bolder;
+}
+.movies-row{
+  min-height: 350px;
+  background: rgb(0, 0, 0, 0.8);
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.movie-title{
+  color: white;
+}
+.img-movies{
+  height: 260px;
+  padding: 6px;
+  margin-top: 22px;
+}
+.movies-column{
+  margin-top: 5px;
+  min-height: 330px;
+  border: 1px dashed #FFFFFF;
+}
+.services-text{
+  color: white;
+}
+.left-column{
+  border-right: 1px dashed black;
+}
+.user_data{
+  padding-top: 10px;
+  font-size: 18px;
+  color: white;
+}
+.input-element{
+  width: 100%;
+  height: 28px;
+  padding: 10px;
+  color: white;
+  background: rgb(255, 255, 255, 0.4);
+  border-radius: 4px;
+  border: none;
+  margin-top: 5px;
+}
+.label-class{
+  color: white;
+  font-size: 13px;
+  margin-right: 10px;
+}
+.btn-save{
+  width: 40%;
+  background-color: rgba(8, 45, 94, 0.95);
+  color: white;
+}
+@media (max-width:770px){
+  .rigth-column{
+    display: none;
+  }
+  .movies-row{
+    min-height: 250px;
+  }
+  .movies-column{
+    min-height: 230px;
+  }
+  .jumbotron{
+    min-height: 400px;
+  }
+  h2{
+    font-size: 22px;
+  }
+  .titulo-cartelera{
+    font-size: 15px;
+  }
+  .jumbotron-img{
+    margin-top: 20px;
+  }
+}
