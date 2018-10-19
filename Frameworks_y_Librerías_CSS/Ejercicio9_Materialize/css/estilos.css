@@ -1,0 +1,8 @@
+.encabezado{
+  min-height: 4rem;
+}
+
+.grupos, .publicaciones{
+  min-height: 50rem;
+  border: 1px solid black;
+}
