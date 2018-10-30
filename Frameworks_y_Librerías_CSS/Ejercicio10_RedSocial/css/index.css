@@ -1,0 +1,39 @@
+.barra-superior{
+  min-height: 4rem;
+}
+div[class*="columna"]{
+  min-height: 50rem;
+  /*border: 1px solid #eceff1;*/
+}
+div[class*="bloque"]{
+  height: 25rem;
+  padding: 0 !important;
+}
+
+.new-publicaciones{
+  background-color: #ffecb3 !important;
+  min-height: 7rem;
+}
+
+.publicaciones{
+  background-color: #ffecb3 !important;
+  min-height: 17rem;
+  padding:  2rem;
+}
+
+.logo{
+  width: 43px;
+  margin-top: 0.5rem;
+}
+
+.noticias{
+  background-color: #ffecb3 !important;
+  min-height: 50rem;
+  padding:  0.5rem; !important;
+  margin-top: 1rem;
+}
+
+.responsive-img{
+  border: 0.6rem solid #ff8f00;
+  border-radius: 5px;
+}
