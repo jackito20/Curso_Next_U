@@ -1,0 +1,87 @@
+.barra-superior{
+  min-height: 4rem;
+}
+div[class*="columna"]{
+  min-height: 50rem;
+  /*border: 1px solid #eceff1;*/
+}
+div[class*="bloque"]{
+  height: 25rem;
+  padding: 0 !important;
+  overflow: scroll;
+}
+
+.new-publicaciones{
+  background-color: #ffecb3 !important;
+  min-height: 7rem;
+}
+
+.publicaciones{
+  background-color: #ffecb3 !important;
+  min-height: 17rem;
+}
+
+.logo{
+  width: 43px;
+  margin-top: 0.5rem;
+  float: left;
+}
+
+.noticias{
+  background-color: #ffecb3 !important;
+  min-height: 50rem;
+  padding:  0.5rem; !important;
+  margin-top: 1rem;
+}
+
+.responsive-img{
+  border: 0.6rem solid #ff8f00;
+  border-radius: 5px;
+}
+
+.logoBuscador{
+  margin-bottom: 0;
+}
+
+.buscar-campo {
+    float: left;
+    width: 70%;
+    margin-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+input[type="text"] {
+    border-bottom: 1px solid #ffecb3;
+    color: #ffecb3;
+    font-size: 1.5rem;
+    width: 80%;
+}
+
+.input-field .prefix {
+    color: #ffecb3;
+}
+
+.iconosAcciones{
+  margin-top: 1rem;
+}
+
+.grupoMiembros{
+  color: #ff8f00;
+}
+
+.newPublicacion{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  resize: none;
+  border: 1px solid #ff8f00;
+  background-color: #ff8f00;
+  height: 5rem;
+  color: #fff;
+
+}
+
+@media (max-width: 600px) {
+  .columna-grupos{
+    padding: 0 !important;
+  }
+}
