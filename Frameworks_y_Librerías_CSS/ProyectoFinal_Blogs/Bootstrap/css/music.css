@@ -1,0 +1,65 @@
+.container{
+  padding-right: 0px !important;
+}
+.logoMusic{
+  max-height: 100px;
+  padding: 0 1.5rem;
+}
+
+.img-social{
+  width: 40px;
+  height: 40px;
+}
+
+@media (min-width: 992px) {
+  .img-social{
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: 768px) {
+  .img-social{
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+}
+
+.header{
+  background-color: black;
+}
+
+.redes-sociales{
+  margin-top: 40px;
+}
+
+.nav-link, .btn{
+  margin: 0 1rem;
+  border-radius: .25rem !important;
+}
+
+#guacoImage{
+  width: 100%;
+  padding: 1rem;
+}
+
+#puente{
+  width: 100%;
+}
+
+.bloque-busqueda{
+    padding: 1rem 0;
+}
+/*.btn-group-justified {
+  display: flex;
+  width: 100%;
+  .btn,
+  .btn-group {
+    flex: 1;
+    .btn {
+      width: 100%;
+    }
+    .dropdown-menu {
+      left: auto;
+    }
+  }
+}*/
