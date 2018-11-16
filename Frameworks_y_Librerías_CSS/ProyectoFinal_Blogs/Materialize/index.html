@@ -11,34 +11,60 @@
     <title>Turismo</title>
   </head>
   <body>
-    <div class="row contenedor-principal">
-      <div class="col s12">
+    <div class="container-fluid contenedor-principal">
         <div class="row">
-          <div class="col s3">
+          <div class="col s6 l3">
             <img src="img/logo.gif" alt="Logo Venezuela" class="logo">
           </div>
-          <div class="col s9">
+          <div class="col s6 l9 rigth">
             <div class="row">
-                <div class="col s12">
-                  <nav class="transparent z-depth-0">
-                    <div class="nav-wrapper">
-                      <ul class="right">
-                        <li class="active"><a href="#" class="waves-effect waves-light btn blue accent-4">Inicio</a></li>
-                        <li><a href="#" class="waves-effect waves-light btn blue accent-4">Estuve en..</a></li>
-                        <li><a href="#" class="waves-effect waves-light btn blue accent-4">Mejores Viajes</a></li>
-                        <li><a class="waves-effect waves-light btn blue accent-4" href="#">Recomendaciones</a></li>
-                      </ul>
-                    </div>
-                  </nav>
-                </div>
-                <div class="col s12">
-                  <h5 class="left slogan">Creando mi propio camino...</h5>
-                </div>
+              <div class="col s12">
+                <nav class="transparent z-depth-0">
+                  <div class="nav-wrapper">
+                    <ul class="right">
+                      <li>
+                        <a href="#" class="waves-effect waves-light btn-small blue accent-4">
+                          <i class="tiny material-icons hide-on-large-only">home</i>
+                          <i class="material-icons left hide-on-med-and-down">home</i>
+                          <span class="hide-on-med-and-down">Inicio</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="waves-effect waves-light btn-small blue accent-4">
+                          <i class="tiny material-icons hide-on-large-only">place</i>
+                          <i class="material-icons left hide-on-med-and-down">place</i>
+                          <span class="hide-on-med-and-down">Estuve en..</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="waves-effect waves-light btn-small blue accent-4">
+                          <i class="tiny material-icons hide-on-large-only">favorite</i>
+                          <i class="material-icons left hide-on-med-and-down">favorite</i>
+                          <span class="hide-on-med-and-down">Mejores Viajes</span>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" class="waves-effect waves-light btn-small blue accent-4">
+                          <i class="tiny material-icons hide-on-large-only">thumb_up</i>
+                          <i class="material-icons left hide-on-med-and-down">thumb_up</i>
+                          <span class="hide-on-med-and-down">Recomendaciones</span>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+              <div class="col s12 hide-on-med-and-down">
+                <h5 class="left slogan">Creando mi propio camino...</h5>
+              </div>
             </div>
+          </div>
+          <div class="col l12 hide-on-large-only">
+            <h5 class="left slogan">Creando mi propio camino...</h5>
           </div>
         </div>
         <div class="row">
-          <div class="col s1">
+          <div class="col l1 hide-on-med-and-down">
             <div class="row">
               <div class="col s12 social">
                 <img class="social-icons circle z-depth-4" src="img/facebook.png">
@@ -54,9 +80,9 @@
               </div>
             </div>
           </div>
-          <div class="col s11 imagen">
+          <div class="col s12 l11 imagen">
             <div class="row">
-              <div class="col s4 center-align">
+              <div class="col s12 l4 center-align">
                 <div class="row">
                   <div class="col s12">
                     <img src="img/playapuntalacruz.jpg" class="imagenRejilla z-depth-5">
@@ -69,7 +95,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col s4 center-align">
+              <div class="col s12 l4 center-align">
                 <div class="row">
                   <div class="col s12">
                     <img src="img/picoespecjo.jpg" class="imagenRejilla z-depth-5">
@@ -79,7 +105,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col s4 center-align">
+              <div class="col s12 l4 center-align">
                 <div class="row">
                   <div class="col s12">
                     <img src="img/medanos.jpg" class="imagenRejilla z-depth-5">
@@ -91,12 +117,12 @@
               </div>
             </div>
           </div>
-
         </div>
         <div class="row">
-          <div class="col s8">
+          <div class="col s12 l8">
             <div class="card principal-blog grey lighten-1">
-              <img src="img/parquecanaima.jpg" class="imagenBlog left">
+              <img src="img/parquecanaima.jpg" class="imagenBlog left hide-on-med-and-down">
+              <img src="img/parquecanaima.jpg" class="imagenBlog hide-on-large-only">
               <h4>Parque Nacional Canaima</h4>
               <div class="chip">
                 15 de Noviembre, 2018
@@ -127,24 +153,76 @@
                         <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
                         <label for="icon_prefix2">Comentario</label>
                       </div>
+                      <div class="col s12">
+                        <button class="btn waves-effect waves-light right" type="submit" name="action">Enviar
+                          <i class="material-icons right">send</i>
+                        </button>
+                      </div>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col s4">
+          <div class="col s12 l4">
             <div class="card principal-blog grey lighten-1 center-align">
               <img src="img/mujer.png" class="circle perfil-img">
               <h5 class="perfil-titulo">Jackeline Hernández</h5>
-              <p>Ingeniera en Computación con experiencia en soluciones de automatización industrial, desarrollo de software a la medida y gestión de proyectos. Apasionada por el Desarrollo de Software. Disfruto mi profesión, por eso me caracterizo por ser un profesional pro-activo, eficiente y responsable, con experiencia trabajando bajo presión. 
+              <p>Ingeniera en Computación con experiencia en soluciones de automatización industrial, desarrollo de software a la medida y gestión de proyectos. Apasionada por el Desarrollo de Software. Disfruto mi profesión, por eso me caracterizo por ser un profesional pro-activo, eficiente y responsable, con experiencia trabajando bajo presión.
 
               Interesada en la Programación, la Ingeniería de Software y la Gerencia de Proyectos. Dispuesta siempre a emprender nuevos retos, aprender nuevas tecnologías y fortalecer los conocimientos ya adquiridos. La disciplina, el compromiso y la responsabilidad son mi bandera.</p>
               <p></p>
             </div>
           </div>
         </div>
-      </div>
+        <div class="row">
+          <div class="col s12 l8">
+            <div class="card principal-blog grey lighten-1">
+              <img src="img/PlayadeVenezuelaMarielba.jpg" class="imagenBlog left hide-on-med-and-down">
+              <img src="img/PlayadeVenezuelaMarielba.jpg" class="imagenBlog hide-on-large-only">
+              <h4>Parque Nacional Morrocoy</h4>
+              <div class="chip">
+                15 de Noviembre, 2018
+              </div>
+              <div class="chip">
+                Caracas, Venezuela
+              </div>
+              <p>El Parque nacional Morrocoy es un parque nacional ubicado en el litoral más oriental del estado Falcón y en el noroeste del Golfo Triste; en la costa centro occidental venezolana, cerca de las poblaciones de Boca de Aroa, Tucacas, Sanare, Chichiriviche, Flamenco y Tocuyo de la Costa. Fue declarado parque nacional el 26 de mayo de 1974 y consta de 32.090 ha.
+
+              El parque se extiende tanto por zonas terrestres como acuáticas del Golfo Triste, contiene una zona de manglares y gran cantidad de islotes o cayos entre los cuales se encuentran Borracho, Muerto, Sombrero, Sal, Las Animas y Peraza, entre otros, con playas espectaculares de arenas blancas como playa Mero, Paiclás, Punta Brava, Mayorquina, Playuela, Playuelita, Sur (conocida popularmente como azul por el azul de sus aguas), Norte, Boca Seca, Playa Muerto y muchas más; así como bajos (sin orilla) como Bajo Caimán, Tucupido y Los Juanes.</p>
+              <div class="green lighten-5 comentario">
+                <h5>Deja tu Comentario</h5>
+                <div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s6">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">Nombre</label>
+                      </div>
+                      <div class="input-field col s6">
+                        <i class="material-icons prefix">email</i>
+                        <input id="icon_email" type="email" class="validate">
+                        <label for="icon_email">Correo Electronico</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">mode_edit</i>
+                        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                        <label for="icon_prefix2">Comentario</label>
+                      </div>
+                      <div class="col s12">
+                        <button class="btn waves-effect waves-light right" type="submit" name="action">Enviar
+                          <i class="material-icons right">send</i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>

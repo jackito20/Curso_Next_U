@@ -8,15 +8,18 @@
   background-repeat: no-repeat;
   background-size: 100%;
   background-attachment: fixed;
-  background-position: 0 100px;
+  background-position: 0 115px;
   background-color: #616161;
 }
 
 .logo{
   max-width: 100%;
-  padding: 0 2rem;
 }
 
+nav ul a.btn-small{
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
 .slogan{
   margin-top: 0px !important;
   font-style: italic;
@@ -32,16 +35,14 @@
   margin:  10% 20%;
 }
 
-.imagen{
-    /*background-color: rgba(10, 10, 10, 0.5);*/
-}
-
 .imagenRejilla{
   max-width: 95%;
+  border: 5px solid grey;
+  border-radius: 5px;
 }
 
 .imagenBlog{
-  max-width: 40%;
+  max-width: 95%;
   margin-right: 1rem;
   margin-top: 1rem;
   border: 5px solid grey;
@@ -54,7 +55,6 @@
 
 p{
   text-align: justify;
-
 }
 
 .card{
@@ -75,4 +75,10 @@ p{
 
 .comentario{
   padding: 1rem;
+}
+
+@media(min-width:992px){
+  .imagenBlog{
+    max-width: 40%;
+  }
 }
