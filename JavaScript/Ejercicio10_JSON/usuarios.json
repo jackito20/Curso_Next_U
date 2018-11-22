@@ -1,0 +1,27 @@
+{
+  "usuarios":[
+    {
+      "identificacion": 12345,
+      "nombre":"Jacke",
+      "apellido": "Hern",
+      "edad": 30,
+      "email":"jackito@gmail.com",
+      "telefono": "0141",
+      "direccion": "Bogota",
+      "estado": "activo"
+    },
+    {
+      "identificacion": 12345,
+      "nombre":"Jacke",
+      "apellido": "Hern",
+      "edad": 30,
+      "email":"jackito@gmail.com",
+      "telefono": "0141",
+      "direccion": "Bogota",
+      "estado": "activo"
+    },
+    {},
+    {},
+    {},
+  ]
+}
