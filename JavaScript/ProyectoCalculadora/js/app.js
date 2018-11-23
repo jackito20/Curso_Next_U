@@ -35,6 +35,7 @@ var Calculadora = {
   },
 
   validarTecla: function(elemento){
+    console.log(this.operaciones)
     this.pantalla = document.getElementById("display");
     if(((this.pantalla.innerHTML=="0" && elemento.id!="0")||this.iniciarTeclado) && this.operadores.indexOf(elemento.id)<0){
       this.pantalla.innerHTML = elemento.id;
@@ -52,9 +53,9 @@ var Calculadora = {
       case "on":
         this.pantalla.innerHTML = "0";
         this.iniciarTeclado=true;
-        this.operaciones=[],
-        this.resultado=0,
-        this.numero1=null,
+        this.operaciones=[];
+        this.resultado=0;
+        this.numero1=null;
         break;
       case "punto":
         this.pantalla.innerHTML = !this.pantalla.innerHTML.includes(".") ? this.pantalla.innerHTML + "." : this.pantalla.innerHTML;
@@ -70,6 +71,8 @@ var Calculadora = {
         this.operar();
         this.pantalla.innerHTML = this.resultado;
         this.iniciarTeclado=true;
+        this.operaciones.push("igual");
+        this.operaciones.push(this.resultado);
         break;
       default:
         this.operaciones.push(elemento.id);
@@ -125,8 +128,13 @@ var Calculadora = {
             }
             break;
         default:
-          this.numero1=this.operaciones[index];
-          console.log("Estableciendo numero1= "+this.numero1);
+          if(index==0){
+            this.numero1=this.operaciones[index];
+            console.log("Estableciendo numero1= "+this.numero1)
+          }else if(this.operaciones[index]=="igual"){
+            this.operaciones.push(this.operaciones[index-2]);
+            this.operaciones.push(this.operaciones[index-1]);
+          }
           break;
       }
     }
