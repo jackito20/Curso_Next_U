@@ -8,7 +8,6 @@ $(function(){
   var elementoPrev;
   var elementoNext;
   var checkBoxs = [];
-
   //Evento para cambiar de color al item seleccionado
   $(".elemento-tabla .collection-item").on("click",function(){
     $(".collection-item").removeClass("selected-item");
@@ -56,33 +55,101 @@ $(function(){
     }
   });
 
-  $(".check").change(function(){
+  $(".check").on("change", function(){
     
+    console.log($(this));
     if($(this).is(':checked')){
-      console.log("checqueado")
-
-      $(this).checked = false;
-
-      console.log( $(this));
-      
-      if($(this).is(':checked')){
-        console.log( "NO");
-      }
-      /*if(checkBoxs.length==2){
-        console.log(checkBoxs[1]);
-        $(this).checked=false;
-        if(checkBoxs[1].is(':checked')){
-          console.log("cambiar");
-        }
-        console.log(checkBoxs[1].att);
+      console.log("seleccionar");
+      if(checkBoxs.length==2){
+        checkBoxs[checkBoxs.length-1].checked = false;
         checkBoxs.pop();
+        checkBoxs.push($(this)[0]);
+      }else{
+        checkBoxs.push($(this)[0]);
       }
-      checkBoxs.push($(this));
-      console.log(checkBoxs);*/
+      
     }else{
-
+      console.log("desseleccionar");
+      var pos = jQuery.inArray($(this)[0], checkBoxs );
+      if(pos>=0){
+        checkBoxs.splice(pos,1);
+      }
     }
+    console.log(checkBoxs);
 
   });
 
-})
+  $("#reemplazar").on("click", function(){
+    console.log("reemplazar");
+    console.log(checkBoxs);
+
+    console.log(checkBoxs[0].id);
+    console.log(checkBoxs[0].id.split("Check"));
+    var item1 = (checkBoxs[0].id.split("Check"))[0];
+    var item2 = (checkBoxs[1].id.split("Check"))[0];
+
+    var itemCheck1 = $("#"+checkBoxs[0].id).parent();
+    var itemCheck2 = $("#"+checkBoxs[1].id).parent();
+
+    
+    item1 = $("#"+item1);
+    item2 = $("#"+item2);
+    console.log(item1);
+    console.log(item2);
+
+    console.log(itemCheck1);
+    console.log(itemCheck2);
+
+    var tmp=item1;
+    var prevItem2 = item2.prev();
+
+    var tmpCheck=itemCheck1;
+    var prevCheckItem2 = itemCheck2.prev();
+
+    console.log(prevItem2);  
+    console.log(prevCheckItem2);  
+
+    /*if(!prevItem2.length){
+      tmp = item2;
+      item2 = item1;
+      item1 = tmp;
+
+      tmp=item1;
+      prevItem2 = item2.prev();
+
+      tmpCheck = itemCheck2;
+      itemCheck2 = itemCheck1;
+      itemCheck1 = tmpCheck;
+
+      tmpCheck=itemCheck1;
+      prevCheckItem2 = itemCheck2.prev();
+    }*/
+
+    if(item1[0]==prevItem2[0]){
+      console.log("iguales");
+      prevItem2=item2;
+      prevCheckItem2 = itemCheck2;
+    }
+
+    //console.log(item1.attr("id"));
+    $("#"+item1.attr("id")).replaceWith(item2);
+    //item1.replaceWith(item2);
+    //prevItem2.after(tmp);
+    $("#"+prevItem2.attr("id")).after(tmp);
+
+    //itemCheck1.replaceWith(itemCheck2);
+    $(itemCheck1.attr("id")).replaceWith(itemCheck2);
+    //prevCheckItem2.after(tmpCheck);
+    $(prevCheckItem2.attr("id")).replaceWith(tmpCheck);
+
+    itemCheck1 = $("#"+checkBoxs[0].id).parent();
+    itemCheck2 = $("#"+checkBoxs[1].id).parent();
+    
+    console.log(itemCheck1);
+    console.log(itemCheck2);
+    
+    item1, item2, tmp, prevItem2, itemCheck1, itemCheck2, tmpCheck, prevCheckItem2 = null;
+
+  });
+
+});
