@@ -18,26 +18,11 @@ $(function(){
 
   $("#borrar").on("click", function(){
     idElemento = $(".selected-item").attr("id");
-    /*console.log("longitud");
-    console.log($(".selected-item").prev().length);
-    console.log($(".selected-item").next().length);*/
     
     elementoPrev =  $(".selected-item").prev().length !=0 ? $(".selected-item").prev() : null;
     elementoNext =  $(".selected-item").next().length != 0 ? $(".selected-item").next() : null;
-    /*console.log(elementoPrev);
-    console.log(elementoNext);
-    console.log(idElemento);*/
-  
-    //elementoEliminadoCh=$("#"+idElemento+"Check").parent();
-    //console.log(elementoEliminadoCh);
     
-    //elementoChPrev = elementoEliminadoCh.prev() ? elementoEliminadoCh.prev() : null;
-    //elementoChNext = elementoEliminadoCh.next() ? elementoEliminadoCh.next() : null;
-    /*console.log(elementoChPrev);
-    console.log(elementoChNext);*/
-
     elementoEliminado= $(".selected-item").detach();
-    //elementoEliminadoCh=elementoEliminadoCh.detach();
   });
 
   $("#deshacer").on("click", function(){
@@ -72,6 +57,7 @@ $(function(){
       console.log("desseleccionar");
       var pos = jQuery.inArray($(this)[0], checkBoxs );
       if(pos>=0){
+        console.log(checkBoxs[pos]);
         checkBoxs.splice(pos,1);
       }
     }
@@ -109,7 +95,7 @@ $(function(){
     console.log(prevItem2);  
     console.log(prevCheckItem2);  
 
-    /*if(!prevItem2.length){
+    if(!prevItem2.length){
       tmp = item2;
       item2 = item1;
       item1 = tmp;
@@ -123,7 +109,7 @@ $(function(){
 
       tmpCheck=itemCheck1;
       prevCheckItem2 = itemCheck2.prev();
-    }*/
+    }
 
     if(item1[0]==prevItem2[0]){
       console.log("iguales");
@@ -138,9 +124,9 @@ $(function(){
     $("#"+prevItem2.attr("id")).after(tmp);
 
     //itemCheck1.replaceWith(itemCheck2);
-    $(itemCheck1.attr("id")).replaceWith(itemCheck2);
+    $(itemCheck1).replaceWith(itemCheck2);
     //prevCheckItem2.after(tmpCheck);
-    $(prevCheckItem2.attr("id")).replaceWith(tmpCheck);
+    $(prevCheckItem2).after(tmpCheck);
 
     itemCheck1 = $("#"+checkBoxs[0].id).parent();
     itemCheck2 = $("#"+checkBoxs[1].id).parent();
