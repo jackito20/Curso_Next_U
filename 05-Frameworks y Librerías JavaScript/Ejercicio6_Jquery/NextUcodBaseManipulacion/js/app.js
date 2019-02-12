@@ -40,7 +40,7 @@ $(function(){
     }
   });
 
-  $(".check").on("change", function(){
+  $(".check").on("click", function(){
     
     console.log($(this));
     if($(this).is(':checked')){
@@ -69,8 +69,6 @@ $(function(){
     console.log("reemplazar");
     console.log(checkBoxs);
 
-    console.log(checkBoxs[0].id);
-    console.log(checkBoxs[0].id.split("Check"));
     var item1 = (checkBoxs[0].id.split("Check"))[0];
     var item2 = (checkBoxs[1].id.split("Check"))[0];
 
@@ -80,20 +78,12 @@ $(function(){
     
     item1 = $("#"+item1);
     item2 = $("#"+item2);
-    console.log(item1);
-    console.log(item2);
-
-    console.log(itemCheck1);
-    console.log(itemCheck2);
 
     var tmp=item1;
     var prevItem2 = item2.prev();
 
     var tmpCheck=itemCheck1;
     var prevCheckItem2 = itemCheck2.prev();
-
-    console.log(prevItem2);  
-    console.log(prevCheckItem2);  
 
     if(!prevItem2.length){
       tmp = item2;
@@ -117,25 +107,79 @@ $(function(){
       prevCheckItem2 = itemCheck2;
     }
 
-    //console.log(item1.attr("id"));
     $("#"+item1.attr("id")).replaceWith(item2);
-    //item1.replaceWith(item2);
-    //prevItem2.after(tmp);
     $("#"+prevItem2.attr("id")).after(tmp);
 
-    //itemCheck1.replaceWith(itemCheck2);
-    $(itemCheck1).replaceWith(itemCheck2);
-    //prevCheckItem2.after(tmpCheck);
-    $(prevCheckItem2).after(tmpCheck);
-
-    itemCheck1 = $("#"+checkBoxs[0].id).parent();
-    itemCheck2 = $("#"+checkBoxs[1].id).parent();
-    
+    console.log("////////");
     console.log(itemCheck1);
     console.log(itemCheck2);
-    
-    item1, item2, tmp, prevItem2, itemCheck1, itemCheck2, tmpCheck, prevCheckItem2 = null;
+    $(itemCheck1).replaceWith(itemCheck2);
+    console.log(prevCheckItem2);
+    console.log(tmpCheck);
+    $(prevCheckItem2).after(tmpCheck);
 
   });
 
+  $("#filtro").change(function(){
+    //alert("cambio "+$(this).val());
+    if($(this).val()=="nombre"){
+      var nombres = Array();
+      var array = $(".title");
+      
+      for(i=0;i<array.length; i++){
+        nombres.push($(array[i]).text());
+      }
+      console.log(nombres);
+      nombres.sort();
+      console.log(nombres);
+
+      console.log(array);
+      
+      var item1, item2, itemCheck1, itemCheck2;
+
+      for(i=0;i<nombres.length; i++){
+        if($(array[i]).text()==nombres[i]){
+          console.log("paso "+nombres[i]+" "+i);
+          continue;
+        }else{
+          console.log("cambiar "+nombres[i]+" "+$(array[i]).text()+" "+i);
+
+          item1=$(array[i]).parent();
+          item2=$("span:contains('"+nombres[i]+"')").parent();
+          console.log(item1.attr("id"));
+          console.log(item1);
+          console.log(item2.attr("id"));
+          console.log(item2);
+
+          reemplazar(item1, item2);
+
+          itemCheck1 = $("#"+item1.attr("id")+"Check").parent();
+          itemCheck2 = $("#"+item2.attr("id")+"Check").parent();
+
+          console.log("--check");
+          console.log(itemCheck1);
+          console.log(itemCheck2);
+
+          reemplazar(itemCheck1, itemCheck2);
+          array = $(".title");
+        }
+      }
+    }
+  });
+
+  
 });
+
+function reemplazar(item1, item2){
+  prevItem2 = item2.prev();
+  console.log(prevItem2);
+
+  if(item1[0]==prevItem2[0]){
+    console.log("iguales");
+    prevItem2=item2;
+  }
+  tmp=$(item1).replaceWith(item2);
+  console.log(tmp);
+  $(prevItem2).after(tmp);
+
+}

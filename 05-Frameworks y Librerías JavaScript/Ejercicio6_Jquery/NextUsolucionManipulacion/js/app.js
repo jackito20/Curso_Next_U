@@ -219,6 +219,7 @@ $(function(){
     $(elemento1).replaceWith(elemento2);
     $(previo).after(tmp);
     console.log(check1);
+    console.log(check2);
     $(check1).replaceWith(check2);
     console.log(prevCheck);
     console.log(tmpCheck);
