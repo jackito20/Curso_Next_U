@@ -1,5 +1,6 @@
 
 function bloqueHandler(){
+  console.log("bloqueHandler");
   if ($('activarJuego').getValue()=='on') {
 
       $('tablero').observe('click', function(event){
@@ -15,9 +16,8 @@ function bloqueHandler(){
         }
       })
   }else{
-    reiniciar();
     $('tablero').stopObserving('click');
-    
+    reiniciar();
   }
 }
 
@@ -50,11 +50,48 @@ function deleteBlock(){
 }
 
 function reiniciar(){
-  $$('.contenido').each(function(item, index){
-    item.up().removeClassName("cuadroExito");
-    item.up().addClassName("cuadro");
-    item.hide();
-  });
+  console.log("REINICIAR");
+  if ($('activarJuego').getValue()!='on') {
+    $$('.contenido').each(function(item, index){
+      item.up().removeClassName("cuadroExito");
+      item.up().addClassName("cuadro");
+      item.hide();
+    });
+    reubicar();
+  }
+}
+
+function reubicar(){
+  var tablero = $('tablero').childElements();
+  console.log(tablero);
+  cant = tablero.length;
+  console.log(cant);
+  var tableroNuevo = new Array();
+  console.log(tableroNuevo);
+
+  var usados = new Array();
+  aUsar = new Array();
+
+  for(i=0; i<cant; i++){
+    aUsar.push(i);
+  }
+  console.log(tableroNuevo);
+  console.log(aUsar);
+  var min=0;
+  for(i=0; i<cant; i++){
+    var max=aUsar.length-1;
+    var num = Math.floor(Math.random()*(max-min+1))+min;
+    console.log("i "+i+" max "+max+" min "+min+" num "+num);
+    usados.push(aUsar[num]);
+    tableroNuevo.push(tablero[aUsar[num]]);
+    aUsar.splice(num, 1);
+    tablero[i].setStyle({order: aUsar[num]})
+  }
+  console.log(aUsar);
+  console.log(usados);
+  console.log(tableroNuevo);
+  console.log(tablero);
+
 }
 
 document.observe("dom:loaded", function(){
