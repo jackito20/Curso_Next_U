@@ -1,23 +1,30 @@
 
 function bloqueHandler(){
   console.log("bloqueHandler");
-  if ($('activarJuego').getValue()=='on') {
-
-      $('tablero').observe('click', function(event){
-        var bloqueClickeado = event.findElement();
-        bloqueClickeado.down().show();
-        if (check2Clicks()) {
-          $('tablero').stopObserving('click');
-          if(!iguales()){
-            hideAll.delay(1);
-          }else{
-            deleteBlock.delay(1);
+  if(!descubierto()){
+    if ($('activarJuego').getValue()=='on') {
+        $('tablero').observe('click', function(event){
+          inicio();
+          var bloqueClickeado = event.findElement();
+          bloqueClickeado.down().show();
+          if (check2Clicks()) {
+            $('tablero').stopObserving('click');
+            if(!iguales()){
+              hideAll.delay(1);
+            }else{
+              deleteBlock.delay(1);
+            }
           }
-        }
-      })
+        })
+    }else{
+      $('tablero').stopObserving('click');
+      parar();
+      reinicio();
+      reiniciarTablero();
+    }
   }else{
-    $('tablero').stopObserving('click');
-    reiniciar();
+    console.log("PARAR");
+    parar();
   }
 }
 
@@ -33,9 +40,9 @@ function iguales(){
 
 function deleteBlock(){
   var mostrados = getMostrados();
-  console.log("iguales")
+  /*console.log("iguales")
   console.log(mostrados[0]);
-  console.log(mostrados[1]);
+  console.log(mostrados[1]);*/
 
   mostrados[0].hide();
   mostrados[1].hide();
@@ -46,10 +53,19 @@ function deleteBlock(){
   mostrados[1].up().removeClassName("cuadro");
   mostrados[1].up().addClassName("cuadroExito");
 
-  bloqueHandler()
+  bloqueHandler();
 }
 
-function reiniciar(){
+function descubierto(){
+  var cuadros = $$(".cuadroExito")
+  if(cuadros.length==20){
+    console.log("ENCONTRADOS "+cuadros.length);
+    return true;
+  }
+  return false;
+}
+
+function reiniciarTablero(){
   console.log("REINICIAR");
   if ($('activarJuego').getValue()!='on') {
     $$('.contenido').each(function(item, index){
@@ -63,11 +79,11 @@ function reiniciar(){
 
 function reubicar(){
   var tablero = $('tablero').childElements();
-  console.log(tablero);
+  //console.log(tablero);
   cant = tablero.length;
-  console.log(cant);
+  //console.log(cant);
   var tableroNuevo = new Array();
-  console.log(tableroNuevo);
+  //console.log(tableroNuevo);
 
   var usados = new Array();
   aUsar = new Array();
@@ -75,22 +91,22 @@ function reubicar(){
   for(i=0; i<cant; i++){
     aUsar.push(i);
   }
-  console.log(tableroNuevo);
-  console.log(aUsar);
+  /*console.log(tableroNuevo);
+  console.log(aUsar);*/
   var min=0;
   for(i=0; i<cant; i++){
     var max=aUsar.length-1;
     var num = Math.floor(Math.random()*(max-min+1))+min;
-    console.log("i "+i+" max "+max+" min "+min+" num "+num);
+    //console.log("i "+i+" max "+max+" min "+min+" num "+num);
     usados.push(aUsar[num]);
     tableroNuevo.push(tablero[aUsar[num]]);
     aUsar.splice(num, 1);
     tablero[i].setStyle({order: aUsar[num]})
   }
-  console.log(aUsar);
+  /*console.log(aUsar);
   console.log(usados);
   console.log(tableroNuevo);
-  console.log(tablero);
+  console.log(tablero);*/
 
 }
 
