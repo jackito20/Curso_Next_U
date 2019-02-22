@@ -85,23 +85,60 @@ function validarArriba(i, j){
 }
 
 function desaparecer(elementos){
-  for(i=0; i<3; i++){
-    $(elementos[i]).hide(2000, function(){
+  //for(i=0; i<3; i++){
+    /*$(elementos[i]).hide(2000, function(i){
       $(this).remove();
       agregarQuitados();
-    });
-  }
+    });*/
+    console.log("DESAPARECER ELEMENTOS ");
+    console.log(elementos);
+    for(i=0; i<3; i++){
+      $(elementos[i]).fadeToggle({
+        duration: 3000,
+        complete: function(){
+          console.log("ELIMINADO");
+          console.log($(this));
+          var padre = $(this).parent()
+          /*$(this).remove();
+          agregarQuitados(padre);*/
+        }
+      });
+    }
+  //}
 }
 
-function agregarQuitados(){
-  columnas=$(".panel-tablero div");
+function agregarQuitados(columna){
+  //columnas=$(".panel-tablero div");
   console.log("AGREGAR QUITADOS");
-  for(var i=0; i<columnas.length; i++){
+  console.log(columna);
+  elemento=$(columna).find("img")[0];
+  console.log(elemento);
+  var img = Math.floor(Math.random()*(4-1+1))+1;
+  $("<img src='image/"+img+".png' class='elemento' style='display:none'>").insertBefore(elemento);
+
+  elementos=$(columna).find("img");
+
+  $(elementos).show({
+    duration: 2000
+  });
+
+  //agregarAleatorio(columna);
+  /*var img = Math.floor(Math.random()*(4-1+1))+1;
+  columna.append("<img src='image/"+img+".png' class='elemento'>");*/
+  /*for(var i=0; i<columnas.length; i++){
     console.log(columnas[i]);
     elementos = $(columnas[i]).find("img");
     console.log(elementos);
     console.log(elementos.length);
-  }
+    if(elementos.length<7){
+      var cant = 7-elementos.length;
+      console.log("AGREGAR "+cant);
+      agregarAleatorio(columnas[i]);
+      /*for(var j=0; j<cant; j++){
+        agregarAleatorio(columnas[i]);
+      }*/
+    /*}
+  }*/
 
   /*for(i=0; i<cant; i++){
     console.log("/////Agregar");
