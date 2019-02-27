@@ -90,6 +90,16 @@ function validarIguales(){
     //setTimeout(desaparecer, 2000);
   }else{
     stopValidarIguales();
+    
+    columnas=$(".panel-tablero div");
+    for(var i=0; i<columnas.length; i++){
+      elementos = $(columnas[i]).find("img");
+
+      for(var j=0; j<elementos.length; j++){
+        $(elementos[j]).draggable();
+        //console.log($(elementos[j]));
+      }
+    }
   }
 }
 
