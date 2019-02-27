@@ -4,8 +4,20 @@ var pararParpadeo, pararValidarIguales;
 $(function(){
     tituloBlanco($(".main-titulo"));
     reiniciarTablero();
-    pararValidarIguales = setInterval(validarIguales, 5000);
     //validarIguales();
+
+    $(".btn-reinicio").click(function(){
+      if($(".btn-reinicio").html()=="Iniciar"){
+        $(".btn-reinicio").html("Reiniciar");
+        inicio();
+        validarIguales();
+        pararValidarIguales = setInterval(validarIguales, 4000);
+        //finalizarJuego();
+      }else{
+        location.reload();
+      }
+     
+    })
 })
 
 function tituloAmarillo(){
@@ -65,11 +77,17 @@ function validarIguales(){
   console.log("VALIDADOS");
   console.log(elementosIguales);
 
+  ordenarElementosIguales();
+
+  console.log("VALIDADOS ORDENADOS");
+  console.log(elementosIguales);
+
+
   if(elementosIguales.length>0){
     var par = setInterval(parpadear, 300);
     pararParpadeo =par;
     setTimeout(stopParpadear, 2000);
-    setTimeout(desaparecer, 3100);
+    //setTimeout(desaparecer, 2000);
   }else{
     stopValidarIguales();
   }
@@ -77,6 +95,7 @@ function validarIguales(){
 
 function stopParpadear(){
   clearInterval(pararParpadeo);
+  desaparecer();
 }
 
 function stopValidarIguales(){
@@ -97,12 +116,13 @@ function validarArriba(i, j){
         for(var x=j; x<7; x--){
           var img = $(columna).find("img")[x];
           if( $(img).attr("src") == $(elementos[0]).attr("src")){
-            elementosIguales.push(img);
+            if(validarElementosIguales(img, i, x)){
+              elementosIguales.push(Array(img, i, x));
+            }
           }else{
             break;
           }
         }
-        //parpadear(elementos, 7);
         return x;
       }
   }
@@ -124,12 +144,13 @@ function validarDerecha(i, j){
         for(var x=i; x<7; x++){
           var img = $(columnas[x]).find("img")[j];
           if( $(img).attr("src") == $(elementos[0]).attr("src")){
-            elementosIguales.push(img);
+            if(validarElementosIguales(img, x, j)){
+              elementosIguales.push(Array(img, x, j));
+            }
           }else{
             break;
           }
         }
-        //parpadear(elementos, 7);
         return j;
       }
   }
@@ -137,36 +158,36 @@ function validarDerecha(i, j){
   return false;
 }
 
-/*function validarDerecha(i, j){
-  
-  columnas=$(".panel-tablero div");
-  var elementos = [$(columnas[i]).find("img")[j], $(columnas[i+1]).find("img")[j], $(columnas[i+2]).find("img")[j]]
-  
-  if(elementos[0] && elementos[1] && elementos[2]){
-    
-    if($(elementos[0]).attr("src") == $(elementos[1]).attr("src")
-      && $(elementos[0]).attr("src") == $(elementos[2]).attr("src")){
-        //console.log($(elementos[0]).parent())
-        //console.log(elementos);
-        console.log(elementos);
-        parpadear(elementos, 5);
-        return true;
-      }
+function validarElementosIguales(img, i, j){
+
+  for(x=0; x<elementosIguales.length; x++){
+    if(elementosIguales[x][1] == i && elementosIguales[x][2] == j){
+      console.log("Son Iguales "+x+" "+i+" "+j);
+      console.log(img);
+      console.log(elementosIguales[x]);
+      return false;
+    }
   }
 
-  return false;
-}*/
+  return true;
+}
+
+function ordenarElementosIguales(){
+
+  for(var i=0; i<elementosIguales.length; i++){
+    elementosIguales[i] = elementosIguales[i][0];
+  }
+}
 
 function parpadear(){
-  $(elementosIguales).fadeToggle(400, function(){
-    
-  });
+  $(elementosIguales).fadeToggle(400);
 }
 
 function desaparecer(){
 
   var agregados = [];
-  
+  var paso=0;
+
     $(elementosIguales)
       .hide({
         duration: 500,
@@ -174,53 +195,24 @@ function desaparecer(){
           var padre = $(this).parent()
           agregados.push(agregarQuitados(padre))
           var punt = parseInt($("#score-text").text());
-          $("#score-text").text(punt+10)
+          $("#score-text").text(punt+10);
         },
-        step: function(){
-          for(var i=0; i<agregados.length; i++){
+        progress : function(){
+          console.log("AGREGADOS");
+          console.log(paso);
+          $(agregados[paso]).show(500);
+          paso++;
+          /*for(var i=0; i<agregados.length; i++){
             $(agregados[i]).show(500, function(){
               agregados.shift();
             });
-          }
+          }*/
         },
         complete: function(){
           $(this).remove();
         }
       });
 }
-
-/*function parpadear(elemento, t){
-  t--;
-  var ap=0;
-  var agregados = [];
-  if(t>0){
-    $(elemento).fadeToggle(300, function(){
-      parpadear($(this), t);
-    })
-  }else{
-    $(elemento)
-      .hide({
-        duration: 1000,
-        start: function(){
-          var padre = $(this).parent()
-          
-          agregados.push(agregarQuitados(padre))
-          
-          ap=0
-        },
-        step: function(){
-          for(var i=0; i<agregados.length; i++){
-            $(agregados[i]).show(1000, function(){
-              agregados.shift();
-            });
-          }
-        },
-        complete: function(){
-          $(this).remove().delay(1000);
-        }
-      });
-  }
-}*/
 
 function agregarQuitados(columna){
   
@@ -229,4 +221,19 @@ function agregarQuitados(columna){
   var elementoAg = $("<img src='image/"+img+".png' class='elemento' style='display:none'>").insertBefore(elemento);
   return elementoAg;
   
+}
+
+function finalizarJuego(){
+  $(".panel-tablero").hide({
+    duration: 1000,
+    progress: function(){
+      $(".panel-score").animate({
+        width: "+=1000"
+      },1400)
+      $(".panel-score .time").hide(100);
+    },
+    complete: function(){
+      $(".panel-score .fin-label").show(1100);
+    }
+  });
 }

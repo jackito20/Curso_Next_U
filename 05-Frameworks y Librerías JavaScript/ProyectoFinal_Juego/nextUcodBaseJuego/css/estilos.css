@@ -19,7 +19,7 @@ body{
   justify-content: space-between;
 }
 
-.main-titulo{
+.main-titulo, .fin-juego{
   font-family: gameFont;
   font-size: 3em;
   color: #DCFF0E;
@@ -54,6 +54,13 @@ body{
   background: rgba(232, 115, 6, 0.5);
 }
 
+.fin-label{
+  text-align: center;
+  height: 23%;
+  width: 100%;
+  display: none;
+
+}
 
 .buttons{
   height: 10%;
