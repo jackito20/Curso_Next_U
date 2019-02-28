@@ -5,7 +5,7 @@ $(function(){
     tituloBlanco($(".main-titulo"));
     reiniciarTablero();
     //validarIguales();
-
+    movimiento();
     $(".btn-reinicio").click(function(){
       if($(".btn-reinicio").html()=="Iniciar"){
         $(".btn-reinicio").html("Reiniciar");
@@ -90,19 +90,78 @@ function validarIguales(){
     //setTimeout(desaparecer, 2000);
   }else{
     stopValidarIguales();
-    
-    columnas=$(".panel-tablero div");
+    movimiento();
+  }
+}
+
+function movimiento(){
+  columnas=$(".panel-tablero div");
     for(var i=0; i<columnas.length; i++){
       elementos = $(columnas[i]).find("img");
 
       for(var j=0; j<elementos.length; j++){
-        $(elementos[j]).draggable();
+        $(elementos[j]).draggable({
+          revert: "invalid"
+        });
+        $(elementos[j]).droppable({
+          classes: {
+            "ui-droppable-hover": "ui-state-hover"
+          },
+          drop: function( event, ui ) {
+            //deleteImage( ui.draggable );
+            console.log(ui.draggable);
+            console.log($(this));
+            
+            $(ui.draggable).css({
+              left: "auto",
+              top: "auto"
+            });
+            
+            if($(this).next()){
+              var nueP = $(this).next();
+              if($(ui.draggable).next()){
+                var nueP2 = $(ui.draggable).next();
+                $(nueP).before($(ui.draggable));
+                $(nueP2).before($(this));
+              }else{
+                var nueP2 = $(ui.draggable).prev();
+                $(nueP).before($(ui.draggable));
+                $(nueP2).before($(this));
+              }
+              
+              
+            }else{
+              var nueP = $(this).prev();
+              var nueP2 = $(ui.draggable).prev();
+              $(nueP).after($(ui.draggable));
+              $(nueP2).after($(this));
+            }
+            /*console.log($(ui.draggable));
+            console.log(next);*/
+
+            
+            /*$(this).replaceWith(function(){
+              
+              var elem = $(this);
+              if($(ui.draggable).next()){
+                var next = $(ui.draggable).next();
+                console.log(next);
+                console.log(elem)
+                //$(elem).insertBefore(next);
+              }
+
+              return ui.draggable;
+            });*/
+
+            //$(nue).replaceWith(elem);
+             
+            
+          }
+        });
         //console.log($(elementos[j]));
       }
     }
-  }
 }
-
 function stopParpadear(){
   clearInterval(pararParpadeo);
   desaparecer();
