@@ -100,8 +100,15 @@ function movimiento(){
       elementos = $(columnas[i]).find("img");
 
       for(var j=0; j<elementos.length; j++){
+        
         $(elementos[j]).draggable({
-          revert: "invalid"
+          revert: "invalid",
+          containment: ".panel-tablero", 
+          scroll: false,
+          grid: [ 100, 100 ],
+          drag: function() {
+            
+          }
         });
         $(elementos[j]).droppable({
           classes: {
@@ -117,19 +124,16 @@ function movimiento(){
               top: "auto"
             });
             
-            if($(this).next()){
-              var nueP = $(this).next();
-              if($(ui.draggable).next()){
+            if($(this).next().length!=0){
+              if($(ui.draggable).next().length!=0){
+                var nueP = $(this).next();
                 var nueP2 = $(ui.draggable).next();
                 $(nueP).before($(ui.draggable));
                 $(nueP2).before($(this));
               }else{
-                var nueP2 = $(ui.draggable).prev();
-                $(nueP).before($(ui.draggable));
-                $(nueP2).before($(this));
+                var nueP = $(this).prev();
+                $(nueP).after($(ui.draggable));
               }
-              
-              
             }else{
               var nueP = $(this).prev();
               var nueP2 = $(ui.draggable).prev();
