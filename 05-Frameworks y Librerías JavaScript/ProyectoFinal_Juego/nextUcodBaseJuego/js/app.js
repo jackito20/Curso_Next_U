@@ -5,13 +5,12 @@ $(function(){
     tituloBlanco($(".main-titulo"));
     reiniciarTablero();
     //validarIguales();
-    movimiento();
+    //movimiento();
     $(".btn-reinicio").click(function(){
       if($(".btn-reinicio").html()=="Iniciar"){
         $(".btn-reinicio").html("Reiniciar");
-        inicio();
-        validarIguales();
-        pararValidarIguales = setInterval(validarIguales, 4000);
+        
+        iniciar();
         //finalizarJuego();
       }else{
         location.reload();
@@ -54,11 +53,30 @@ function reiniciarTablero(){
   }
 }
 
+function iniciar(){
+  inicio();
+  reiniciarMovimientos();
+  validarIguales();
+  pararValidarIguales = setInterval(validarIguales, 4000);
+  
+
+}
+
+function reiniciarMovimientos(){
+  columnas=$(".panel-tablero div");
+    for(var i=0; i<columnas.length; i++){
+      elementos = $(columnas[i]).find("img");
+
+      for(var j=0; j<elementos.length; j++){
+          $(elementos[j]).draggable({ disabled: true });
+          $(elementos[j]).droppable({ disabled: true });
+      }
+    }
+}
+
 function validarIguales(){
-  var mov = $("#movimientos-text").text();
-  console.log("//////MOVIEMIENTOS "+mov++);
+  
   elementosIguales =[];
-  $("#movimientos-text").text(mov++);
   
   var columnas=$(".panel-tablero div");
   var elementosEliminar = [];
@@ -74,20 +92,12 @@ function validarIguales(){
     }
   }
 
-  console.log("VALIDADOS");
-  console.log(elementosIguales);
-
   ordenarElementosIguales();
-
-  console.log("VALIDADOS ORDENADOS");
-  console.log(elementosIguales);
-
 
   if(elementosIguales.length>0){
     var par = setInterval(parpadear, 300);
     pararParpadeo =par;
     setTimeout(stopParpadear, 2000);
-    //setTimeout(desaparecer, 2000);
   }else{
     stopValidarIguales();
     movimiento();
@@ -102,6 +112,7 @@ function movimiento(){
       for(var j=0; j<elementos.length; j++){
         
         $(elementos[j]).draggable({
+          disabled: false,
           revert: "invalid",
           containment: ".panel-tablero", 
           scroll: false,
@@ -111,13 +122,31 @@ function movimiento(){
           }
         });
         $(elementos[j]).droppable({
+          disabled: false,
           classes: {
             "ui-droppable-hover": "ui-state-hover"
           },
+          accept: function(ui){
+            var className = $(this).parent().attr('class');
+            if($(ui).parent().hasClass(className)){
+              if( ($(ui).index() - $(this).index() == 1) || ($(this).index() - $(ui).index() == 1)){
+                return true;
+              }
+            }else{
+              var res = className.split("col-");
+              var indexDrop = parseInt(res[1]);
+              
+              className = $(ui).parent().attr('class');
+              res = className.split("col-");
+              var indexDrag = parseInt(res[1]);
+              
+              if( ( (indexDrop - indexDrag == 1 ) || (indexDrag - indexDrop == 1) ) && ($(this).index() == $(ui).index() ) ){
+                return true;
+              }
+            }
+            return false;
+          },
           drop: function( event, ui ) {
-            //deleteImage( ui.draggable );
-            console.log(ui.draggable);
-            console.log($(this));
             
             $(ui.draggable).css({
               left: "auto",
@@ -140,29 +169,13 @@ function movimiento(){
               $(nueP).after($(ui.draggable));
               $(nueP2).after($(this));
             }
-            /*console.log($(ui.draggable));
-            console.log(next);*/
-
             
-            /*$(this).replaceWith(function(){
-              
-              var elem = $(this);
-              if($(ui.draggable).next()){
-                var next = $(ui.draggable).next();
-                console.log(next);
-                console.log(elem)
-                //$(elem).insertBefore(next);
-              }
-
-              return ui.draggable;
-            });*/
-
-            //$(nue).replaceWith(elem);
-             
+            var movimientos = parseInt($("#movimientos-text").text());
+            $("#movimientos-text").text(movimientos+1);
             
+            iniciar();
           }
         });
-        //console.log($(elementos[j]));
       }
     }
 }
@@ -235,9 +248,6 @@ function validarElementosIguales(img, i, j){
 
   for(x=0; x<elementosIguales.length; x++){
     if(elementosIguales[x][1] == i && elementosIguales[x][2] == j){
-      console.log("Son Iguales "+x+" "+i+" "+j);
-      console.log(img);
-      console.log(elementosIguales[x]);
       return false;
     }
   }
@@ -271,8 +281,6 @@ function desaparecer(){
           $("#score-text").text(punt+10);
         },
         progress : function(){
-          console.log("AGREGADOS");
-          console.log(paso);
           $(agregados[paso]).show(500);
           paso++;
           /*for(var i=0; i<agregados.length; i++){
