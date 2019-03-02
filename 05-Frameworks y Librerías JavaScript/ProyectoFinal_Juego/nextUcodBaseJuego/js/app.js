@@ -1,17 +1,21 @@
 var elementosIguales = [];
 var pararParpadeo, pararValidarIguales;
+var tiempoValidarIguales = 1200;
+var intervaloParpadear = 100;
+var tiempoParpadear = 600;
+var tiempoParpadeo = 300;
+var tiempoIniciar = 300;
+var tiempoMoviemiento = 200;
+var tiempoDesaparecer = 400;
 
 $(function(){
     tituloBlanco($(".main-titulo"));
     reiniciarTablero();
-    //validarIguales();
-    //movimiento();
     $(".btn-reinicio").click(function(){
       if($(".btn-reinicio").html()=="Iniciar"){
         $(".btn-reinicio").html("Reiniciar");
-        
+        inicio();
         iniciar();
-        //finalizarJuego();
       }else{
         location.reload();
       }
@@ -54,10 +58,9 @@ function reiniciarTablero(){
 }
 
 function iniciar(){
-  inicio();
   reiniciarMovimientos();
   validarIguales();
-  pararValidarIguales = setInterval(validarIguales, 4000);
+  pararValidarIguales = setInterval(validarIguales, tiempoValidarIguales);
   
 
 }
@@ -95,9 +98,8 @@ function validarIguales(){
   ordenarElementosIguales();
 
   if(elementosIguales.length>0){
-    var par = setInterval(parpadear, 300);
-    pararParpadeo =par;
-    setTimeout(stopParpadear, 2000);
+    pararParpadeo = setInterval(parpadear, intervaloParpadear);
+    setTimeout(stopParpadear, tiempoParpadear);
   }else{
     stopValidarIguales();
     movimiento();
@@ -127,58 +129,160 @@ function movimiento(){
             "ui-droppable-hover": "ui-state-hover"
           },
           accept: function(ui){
-            var className = $(this).parent().attr('class');
-            if($(ui).parent().hasClass(className)){
-              if( ($(ui).index() - $(this).index() == 1) || ($(this).index() - $(ui).index() == 1)){
-                return true;
-              }
-            }else{
-              var res = className.split("col-");
-              var indexDrop = parseInt(res[1]);
-              
-              className = $(ui).parent().attr('class');
-              res = className.split("col-");
-              var indexDrag = parseInt(res[1]);
-              
-              if( ( (indexDrop - indexDrag == 1 ) || (indexDrag - indexDrop == 1) ) && ($(this).index() == $(ui).index() ) ){
-                return true;
-              }
+            if(validarDragArriba($(this), $(ui)) || validarDragAbajo($(this), $(ui)) || validarDragIzquierda($(this), $(ui)) || validarDragDerecha($(this), $(ui))){
+              return true;
             }
             return false;
           },
           drop: function( event, ui ) {
             
-            $(ui.draggable).css({
+            $($(ui.draggable)).css({
               left: "auto",
               top: "auto"
             });
             
-            if($(this).next().length!=0){
-              if($(ui.draggable).next().length!=0){
-                var nueP = $(this).next();
-                var nueP2 = $(ui.draggable).next();
-                $(nueP).before($(ui.draggable));
-                $(nueP2).before($(this));
-              }else{
-                var nueP = $(this).prev();
-                $(nueP).after($(ui.draggable));
-              }
-            }else{
-              var nueP = $(this).prev();
-              var nueP2 = $(ui.draggable).prev();
-              $(nueP).after($(ui.draggable));
-              $(nueP2).after($(this));
-            }
-            
+            validarMovimiento($(this), $(ui.draggable));
+
             var movimientos = parseInt($("#movimientos-text").text());
             $("#movimientos-text").text(movimientos+1);
             
-            iniciar();
+            setTimeout(iniciar, tiempoIniciar); 
           }
         });
       }
     }
 }
+
+function validarMovimiento(dropE, dragE){
+  
+  if(validarDragArriba($(dropE), $(dragE))){
+    $(dropE).css({top: "+96px"})
+    
+    $(dropE).animate(
+      {
+      top: "-=96"
+      },
+      {
+        done: cambiar($(dropE), $(dragE)),
+        duration: tiempoMoviemiento
+      }
+    )
+  
+  }else if(validarDragAbajo($(dropE), $(dragE)) ){
+    $(dropE).css({top: "-96px"})
+    
+    $(dropE).animate(
+      {
+      top: "+=96"
+      },
+      {
+        done: cambiar($(dropE), $(dragE)),
+        duration: tiempoMoviemiento
+      }
+    )
+
+  }else if(validarDragIzquierda($(dropE), $(dragE)) ){
+    $(dropE).css({left: "+99.4px"})
+    
+    $(dropE).animate(
+      {
+      left: "-=99.4"
+      },
+      {
+        done: cambiar($(dropE), $(dragE)),
+        duration: tiempoMoviemiento
+      }
+    )
+
+  }else if(validarDragDerecha($(dropE), $(dragE)) ){
+    $(dropE).css({left: "-99.4px"})
+    
+    $(dropE).animate(
+      {
+      left: "+=99.4"
+      },
+      {
+        done: cambiar($(dropE), $(dragE)),
+        duration: tiempoMoviemiento
+      } 
+    )
+  }
+
+}
+
+function cambiar(dropE, dragE){
+  if($(dropE).next().length!=0){
+    if($(dragE).next().length!=0){
+      var nueP = $(dropE).next();
+      var nueP2 = $(dragE).next();
+      $(nueP).before($(dragE));
+      $(nueP2).before($(dropE));
+    }else{
+      var nueP = $(dropE).prev();
+      $(nueP).after($(dragE));
+    }
+  }else{
+    var nueP = $(dropE).prev();
+    var nueP2 = $(dragE).prev();
+    $(nueP).after($(dragE));
+    $(nueP2).after($(dropE));
+  }
+}
+
+function validarDragArriba(dropE, dragE){
+  var className = $(dropE).parent().attr('class');
+  if($(dragE).parent().hasClass(className)){
+    if( $(dropE).index() - $(dragE).index() == 1){
+      return true;
+    }
+  }
+  return false;
+}
+
+function validarDragAbajo(dropE, dragE){
+  var className = $(dropE).parent().attr('class');
+  if($(dragE).parent().hasClass(className)){
+    if( $(dragE).index() - $(dropE).index() == 1){
+      return true;
+    }
+  }
+  return false;
+}
+
+function validarDragIzquierda(dropE, dragE){
+  var className = $(dropE).parent().attr('class');
+  if(!$(dragE).parent().hasClass(className)){
+    var res = className.split("col-");
+    var indexDrop = parseInt(res[1]);
+    
+    className = $(dragE).parent().attr('class');
+    res = className.split("col-");
+    var indexDrag = parseInt(res[1]);
+    
+    if(  (indexDrop - indexDrag == 1 )   && ($(dropE).index() == $(dragE).index() ) ){
+      return true;
+    }
+  }
+  return false;
+}
+
+function validarDragDerecha(dropE, dragE){
+  var className = $(dropE).parent().attr('class');
+  if(!$(dragE).parent().hasClass(className)){
+    var res = className.split("col-");
+    var indexDrop = parseInt(res[1]);
+    
+    className = $(dragE).parent().attr('class');
+    res = className.split("col-");
+    var indexDrag = parseInt(res[1]);
+
+    if(  (indexDrag - indexDrop == 1)   && ($(dropE).index() == $(dragE).index() ) ){
+      return true;
+    }
+  }
+  return false;
+}
+
 function stopParpadear(){
   clearInterval(pararParpadeo);
   desaparecer();
@@ -212,7 +316,6 @@ function validarArriba(i, j){
         return x;
       }
   }
-
   return false;
 }
 
@@ -240,7 +343,6 @@ function validarDerecha(i, j){
         return j;
       }
   }
-
   return false;
 }
 
@@ -263,7 +365,7 @@ function ordenarElementosIguales(){
 }
 
 function parpadear(){
-  $(elementosIguales).fadeToggle(400);
+  $(elementosIguales).fadeToggle(tiempoParpadeo);
 }
 
 function desaparecer(){
@@ -273,7 +375,7 @@ function desaparecer(){
 
     $(elementosIguales)
       .hide({
-        duration: 500,
+        duration: tiempoDesaparecer,
         start: function(){
           var padre = $(this).parent()
           agregados.push(agregarQuitados(padre))
@@ -281,13 +383,8 @@ function desaparecer(){
           $("#score-text").text(punt+10);
         },
         progress : function(){
-          $(agregados[paso]).show(500);
+          $(agregados[paso]).show(tiempoDesaparecer);
           paso++;
-          /*for(var i=0; i<agregados.length; i++){
-            $(agregados[i]).show(500, function(){
-              agregados.shift();
-            });
-          }*/
         },
         complete: function(){
           $(this).remove();
