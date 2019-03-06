@@ -10,14 +10,15 @@
 	<script>
 
 	function  cargarMasComentarios(){
-		$.ajax({
-			url: "./comentarios.json",
-			success: function(data){
-				$.each(data,function(indice,elemento){
+		fetch("./comentarios.json", {
+			method: "GET",
+		}).then(function(data){
+			return data.json();
+		}).then(function(json){
+			$.each(json,function(indice,elemento){
 					var insertar = "<div class='comentario'><div class='autor'>Por "+elemento.autor+" - <span class='fecha'>"+elemento.fecha+"</span></div><div class='description'>"+elemento.comentario+"</div></div>";
 					$(".comentarios").append(insertar);
 				})
-			}
 		});
 
 	}
