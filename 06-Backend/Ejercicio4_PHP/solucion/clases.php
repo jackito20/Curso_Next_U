@@ -2,10 +2,13 @@
 
 class Asignatura{
 
-    private $nombre, $nota1, $nota2, $nota3;
+    public $nombre, $nota1, $nota2, $nota3;
 
-    public function _construct(){
-
+    function __construct($nombre, $nota1, $nota2, $nota3){
+        $this->nombre=$nombre;
+        $this->nota1=$nota1;
+        $this->nota2=$nota2;
+        $this->nota3=$nota3;
     }
 
     public function promedio(){
@@ -49,11 +52,12 @@ class Asignatura{
 
 class Estudiante{
 
-    private $nombre, $curso;
-    private $asignaturas[];
+    private $nombre, $curso,$asignaturas;
 
-    public function _construct(){
-
+    function __construct($nombre, $curso){
+        $this->asignaturas = array();
+        $this->nombre=$nombre;
+        $this->curso=$curso;
     }
 
     public function getNombre(){
@@ -76,8 +80,61 @@ class Estudiante{
         return $this->asignaturas;
     }
 
-    public function setAsignaturas($asignaturas){
-        $this->asignaturas = $asignaturas;
+    public function addAsignarura(Asignatura $asignatura){
+        array_push($this->asignaturas, $asignatura);
     }
 }
+
+
+class Profesor{
+    private $nombre, $estudiantes;
+
+    function __construct($nombre){
+        $this->estudiantes = array();
+        $this->nombre=$nombre;
+    }
+
+    public function getNombre(){
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre){
+        $this->nombre = $nombre;
+    }
+
+    public function getEstudiantes(){
+        return $this->estudiantes;
+    }
+
+    public function addEstudiante(Estudiante $estudiante){
+        array_push($this->estudiantes, $estudiante);
+    }
+}
+
+
+class Padre{
+    private $nombre, $hijos;
+
+    function __construct($nombre){
+        $this->hijos = array();
+        $this->nombre=$nombre;
+    }
+
+    public function getNombre(){
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre){
+        $this->nombre = $nombre;
+    }
+
+    public function getHijos(){
+        return $this->hijos;
+    }
+
+    public function addHijo(Estudiante $hijos){
+        array_push($this->hijos, $hijos);
+    }
+}
+
 ?>
