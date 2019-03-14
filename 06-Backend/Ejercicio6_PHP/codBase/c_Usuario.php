@@ -32,6 +32,21 @@
       $this->profile_img = $profile_img;
     }
 
+    function getData(){
+      $array['nombre'] = $this->nombre;
+      $array['apellido'] = $this->apellido;
+      $array['tipo_id'] = $this->tipo_id;
+      $array['id'] = $this->id;
+      $array['fecha_nacimiento'] = $this->fecha_nacimiento;
+      $array['genero'] = $this->genero;
+      $array['estado_civil'] = $this->estado_civil;
+      $array['tipo_telefono'] = $this->tipo_telefono;
+      $array['telefono'] = $this->telefono;
+      $array['ciudad'] = $this->ciudad;
+      $array['pais'] = $this->pais;
+      $array['profile_img'] = $this->profile_img;
+      return $array;
+    }
   }
 
 

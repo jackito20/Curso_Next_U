@@ -12,7 +12,7 @@ $(document).ready(function() {
     dataType: "json"
   }).done(function(data){
     if(data=="false"){
-      window.location("login.html");
+      location.href ="./login.html";
     }else{
       $(".nombre-user").html(data.nombre);
       $(".dropdown-button").append(data.nombre);
