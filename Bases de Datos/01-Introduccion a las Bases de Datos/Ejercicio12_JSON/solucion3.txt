@@ -1,0 +1,54 @@
+usuarios: 	[
+				{
+					"id": "1",
+					"nombre": "Luis Granados",
+					"correo": "lg@gmail.com",
+					"password": "12345678",
+					"portadas": 	["1", "2"]
+				},
+				{
+					"id": "2",
+					"nombre": "María Granados",
+					"correo": "mg@gmail.com",
+					"password": "12345678",
+					"portadas": 	["3"]
+				}
+			]
+
+libros: 	[
+				{
+					"id": "1",
+					"nombre": "El señor de los diamantes",
+					"autor": "Bob Fisher",
+					"fecha_limite": "2019-01-01"
+				},
+				{
+					"id": "2",
+					"nombre": "Carpintería Fácil",
+					"autor": "Mónica Santos",
+					"fecha_limite": "2019-02-01",
+					"portadas":		["1", "2", "3"]
+				}
+			]
+
+portadas:	[
+				{
+					"id": "1",
+					"url": "http://save.com/portada_luis1.jpeg",
+					"fecha_publicacion": "2018-05-01",
+					"puntos": 10
+				},
+				{
+					"id": "2",
+					"url": "http://save.com/portada_luis2.jpeg",
+					"fecha_publicacion": "2018-05-01",
+					"puntos": 0
+				},
+				{
+					"id": "3",
+					"url": "http://save.com/portada_maria1.jpeg",
+					"fecha_publicacion": "2018-06-10",
+					"puntos": 8
+				}
+				
+			]
