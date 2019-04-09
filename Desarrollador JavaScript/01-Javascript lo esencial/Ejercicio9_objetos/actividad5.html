@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://learn.nextu.com/pluginfile.php/903/mod_lesson/page_contents/1222/actividad5.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
+
+<body>
+
+
+
+  <h1>Computador 1</h1>
+
+  <p id="c1">001</p>
+  <p id="n1">2 GB</p>
+  <p id="p1">120 GB</p>
+
+  <h1>Computador 2</h1>
+
+  <p id="c2">002</p>
+  <p id="n2">4 GB</p>
+  <p id="p2">500 GB</p>
+
+  <h1>Computador 3</h1>
+
+  <p id="c3">003</p>
+  <p id="n3">8 GB</p>
+  <p id="p3">1 TB</p>
+
+
+
+  <script>
+
+    
+    var computador1 = {
+        codigo: "001",
+        ram: "2 GB",
+        discoDuro: "120 GB"
+    }
+
+
+
+   
+    var computador2 = new Object();
+    computador2.codigo = "002";
+    computador2.ram = "4 GB";
+    computador2.discoDuro = "500 GB";
+
+
+
+   
+    function computador3(codigo, ram, discoDuro) {
+        this.codigo = codigo;
+        this.ram = ram;
+        this.discoDuro = discoDuro;
+    }
+
+    var computador3 = new computador3("003", "8 GB", "1 TB");
+
+
+
+ 
+
+
+    document.getElementById("c1").innerHTML = computador1.codigo;
+    document.getElementById("n1").innerHTML = computador1.ram;
+    document.getElementById("p1").innerHTML = computador1.discoDuro;
+
+    document.getElementById("c2").innerHTML = computador2.codigo;
+    document.getElementById("n2").innerHTML = computador2.ram;
+    document.getElementById("p2").innerHTML = computador2.discoDuro;
+
+    document.getElementById("c3").innerHTML = computador3.codigo;
+    document.getElementById("n3").innerHTML = computador3.ram;
+    document.getElementById("p3").innerHTML = computador3.discoDuro;
+
+
+
+
+
+</script>
+
+</body></html>

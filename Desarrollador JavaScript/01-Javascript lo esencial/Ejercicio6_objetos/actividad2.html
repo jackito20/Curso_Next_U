@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://learn.nextu.com/pluginfile.php/903/mod_lesson/page_contents/1219/actividad2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
+
+<body>
+
+
+
+  <h1>Estudiante 1</h1>
+
+  <p id="c1">001</p>
+  <p id="n1">Carlos Perez</p>
+  <p id="p1">656454</p>
+
+  <h1>Estudiante 2</h1>
+
+  <p id="c2">002</p>
+  <p id="n2">Maria Gomez</p>
+  <p id="p2">663246</p>
+
+  <h1>Estudiante 3</h1>
+
+  <p id="c3">003</p>
+  <p id="n3">Pedro Castillo</p>
+  <p id="p3">634356</p>
+
+
+
+  <script>
+
+    
+    var estudiante1 = {
+        codigo: "001",
+        nombre: "Carlos Perez",
+        telefono: 656454
+    }
+
+
+
+   
+    var estudiante2 = new Object();
+    estudiante2.codigo = "002";
+    estudiante2.nombre = "Maria Gomez";
+    estudiante2.telefono = 663246;
+
+
+
+   
+    function estudiante3(codigo, nombre, telefono) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.telefono = telefono;
+    }
+
+    var estudiante3 = new estudiante3("003", "Pedro Castillo", 634356);
+
+
+
+
+    document.getElementById("c1").innerHTML = estudiante1.codigo;
+    document.getElementById("n1").innerHTML = estudiante1.nombre;
+    document.getElementById("p1").innerHTML = estudiante1.telefono;
+
+    document.getElementById("c2").innerHTML = estudiante2.codigo;
+    document.getElementById("n2").innerHTML = estudiante2.nombre;
+    document.getElementById("p2").innerHTML = estudiante2.telefono;
+
+    document.getElementById("c3").innerHTML = estudiante3.codigo;
+    document.getElementById("n3").innerHTML = estudiante3.nombre;
+    document.getElementById("p3").innerHTML = estudiante3.telefono;
+
+</script>
+
+</body></html>

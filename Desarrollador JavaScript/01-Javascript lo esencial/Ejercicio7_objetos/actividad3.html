@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!-- saved from url=(0088)https://learn.nextu.com/pluginfile.php/903/mod_lesson/page_contents/1220/actividad3.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head>
+
+<body>
+
+
+
+  <h1>Persona 1</h1>
+
+  <p id="c1">001</p>
+  <p id="n1">Fernando Lopez</p>
+  <p id="p1">18</p>
+
+  <h1>Persona 2</h1>
+
+  <p id="c2">002</p>
+  <p id="n2">Juan Garcia</p>
+  <p id="p2">33</p>
+
+  <h1>Persona 3</h1>
+
+  <p id="c3">003</p>
+  <p id="n3">Martin Calvo</p>
+  <p id="p3">47</p>
+
+
+
+  <script>
+
+    
+    var persona1 = {
+        id: "001",
+        nombre: "Fernando Lopez",
+        edad: 18
+    }
+
+
+
+   
+    var persona2 = new Object();
+    persona2.id = "002";
+    persona2.nombre = "Juan Garcia";
+    persona2.edad = 33;
+
+
+
+   
+    function persona3(id, nombre, edad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+
+    var persona3 = new persona3("003", "Martin Calvo", 47);
+
+
+
+
+    document.getElementById("c1").innerHTML = persona1.id;
+    document.getElementById("n1").innerHTML = persona1.nombre;
+    document.getElementById("p1").innerHTML = persona1.edad;
+
+    document.getElementById("c2").innerHTML = persona2.id;
+    document.getElementById("n2").innerHTML = persona2.nombre;
+    document.getElementById("p2").innerHTML = persona2.edad;
+
+    document.getElementById("c3").innerHTML = persona3.id;
+    document.getElementById("n3").innerHTML = persona3.nombre;
+    document.getElementById("p3").innerHTML = persona3.edad;
+
+</script>
+
+</body></html>

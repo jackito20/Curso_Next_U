@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objetos</title>
+</head>
+<body>
+    <h1>OBJETOS</h1>
+    <ul>
+        <li>
+            <h3>Articulo 1</h3>
+            <ul>
+                <li id="codigo1"></li>
+                <li id="nombre1"></li>
+                <li id="precio1"></li>
+            </ul>
+        </li>
+        <li>
+            <h3>Articulo 2</h3>
+            <ul>
+                <li id="codigo2"></li>
+                <li id="nombre2"></li>
+                <li id="precio2"></li>
+            </ul>
+        </li>
+        <li>
+            <h3>Articulo 3</h3>
+            <ul>
+                <li id="codigo3"></li>
+                <li id="nombre3"></li>
+                <li id="precio3"></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+
+<script>
+    var articulo1 = {
+        codigo: "GRHUR",
+        nombre: "Articulo 1",
+        precio: 1000
+    };
+
+    var articulo2 = new Object();
+    articulo2.codigo = "KLSADN";
+    articulo2.nombre = "Articulo 2";
+    articulo2.precio = 2000;
+
+    function articulo3(codigo, nombre, precio){
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.precio = precio;
+    }
+    var articulo3 = new articulo3("AKLO", "Articulo 3", 3000);
+
+    document.getElementById("codigo1").innerHTML = articulo1.codigo;
+    document.getElementById("nombre1").innerHTML = articulo1.nombre;
+    document.getElementById("precio1").innerHTML = articulo1.precio;
+
+    document.getElementById("codigo2").innerHTML = articulo2.codigo;
+    document.getElementById("nombre2").innerHTML = articulo2.nombre;
+    document.getElementById("precio2").innerHTML = articulo2.precio;
+
+    document.getElementById("codigo3").innerHTML = articulo3.codigo;
+    document.getElementById("nombre3").innerHTML = articulo3.nombre;
+    document.getElementById("precio3").innerHTML = articulo3.precio;
+    
+</script>
+</html>
