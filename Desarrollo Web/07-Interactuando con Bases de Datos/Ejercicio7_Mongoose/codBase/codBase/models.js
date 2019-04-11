@@ -8,7 +8,6 @@ var userSchema = new Schema({
     peso: { type: Number, required: true }
 })
 
-
-var User = mongoose.model('User', userSchema);
+var User = mongoose.model('Users', userSchema);
 
 module.exports = User;
