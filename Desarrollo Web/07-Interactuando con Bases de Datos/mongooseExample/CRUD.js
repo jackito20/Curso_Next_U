@@ -4,7 +4,7 @@ module.exports.insertarRegistro = function(callback){
     let Mateo = new User({nombre: 'Mateo', edad: 28, peso: 90});
 
     Mateo.save((error) => {
-        if(error)console.log(error);
+        if(error)callback(error);
         callback(null, "Registro guardado")
     });
 }

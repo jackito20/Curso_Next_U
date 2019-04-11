@@ -4,14 +4,14 @@ module.exports.insertarRegistro = function(callback){
     let Mateo = new User({nombre: 'Mateo', edad: 28, peso: 90});
 
     Mateo.save((error) => {
-        if(error)console.log(error);
+        if(error)callback(error);
         callback(null, "Registro guardado")
     });
 }
 
 module.exports.eliminarRegistro =  function(callback){
     User.remove({edad:35}, (error) => {
-        if(error)console.log(error);
+        if(error)callback(error);
         callback(null, "Se elimino registro")
     })
     
