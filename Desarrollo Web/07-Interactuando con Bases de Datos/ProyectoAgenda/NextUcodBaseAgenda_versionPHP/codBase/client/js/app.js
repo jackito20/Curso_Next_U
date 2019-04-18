@@ -135,7 +135,8 @@ class EventsManager {
         type: 'POST',
         success: (data) =>{
           if (data.msg=="OK") {
-            alert('Se ha eliminado el evento exitosamente')
+            alert('Se ha eliminado el evento exitosamente');
+            alert(data.msg);
           }else {
             alert(data.msg)
           }
@@ -162,8 +163,7 @@ class EventsManager {
         end_date = end.substr(0,10)
         start_hour = start.substr(11,8)
         end_hour = end.substr(11,8)
-
-
+        
         form_data.append('id', id)
         form_data.append('start_date', start_date)
         form_data.append('end_date', end_date)

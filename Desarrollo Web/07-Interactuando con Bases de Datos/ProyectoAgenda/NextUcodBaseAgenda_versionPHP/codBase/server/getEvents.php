@@ -14,6 +14,7 @@ if(isset($_SESSION["usuario"])){
             $response["msg"] = "OK";
             $i=0;
             while ($fila = $res->fetch_assoc()){
+                $data[$i]["id"] = $fila["id"];
                 $data[$i]["title"] = $fila["titulo"];
                 $data[$i]["start"] = $fila["fecha_inicio"];
                 $data[$i]["allDay"] = $fila["dia_completo"]==1?true:false;
