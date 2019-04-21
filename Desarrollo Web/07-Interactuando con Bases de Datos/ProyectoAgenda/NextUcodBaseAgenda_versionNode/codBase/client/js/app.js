@@ -11,15 +11,27 @@ class EventManager {
     obtenerDataInicial() {
         let url = this.urlBase + "/all"
         $.get(url, (response) => {
-            this.inicializarCalendario(response)
+            if(response!="session"){
+                this.inicializarCalendario(response)
+            }else{
+                alert("Debe iniciar session")
+                window.location.href = "http://localhost:3000/index.html"
+            }
         })
     }
 
     eliminarEvento(evento) {
         let eventId = evento.id
         $.post('/events/delete/'+eventId, {id: eventId}, (response) => {
-            alert(response)
+            if(response!="session"){
+                alert(response)
+            }else{
+                alert("Debe iniciar session")
+                window.location.href = "http://localhost:3000/index.html"
+            }
         })
+        $('.delete').find('img').attr('src', "./img/delete.png");
+        $('.delete').css('background-color', '#8B0913')
     }
 
     guardarEvento() {
@@ -47,9 +59,15 @@ class EventManager {
                     end: end
                 }
                 $.post(url, ev, (response) => {
-                    alert(response)
+                    if(response!="session"){
+                        alert("Registro guardado");
+                        $('.calendario').fullCalendar('renderEvent', response)
+                    }else{
+                        alert("Debe iniciar session")
+                        window.location.href = "http://localhost:3000/index.html"
+                    }
                 })
-                $('.calendario').fullCalendar('renderEvent', ev)
+                
             } else {
                 alert("Complete los campos obligatorios para el evento")
             }
@@ -88,7 +106,7 @@ class EventManager {
                 center: 'title',
                 right: 'month,agendaWeek,basicDay'
             },
-            defaultDate: '2016-11-01',
+            defaultDate: '2019-04-01',
             navLinks: true,
             editable: true,
             eventLimit: true,
@@ -100,7 +118,7 @@ class EventManager {
             },
             events: eventos,
             eventDragStart: (event,jsEvent) => {
-                $('.delete').find('img').attr('src', "img/trash-open.png");
+                $('.delete').find('img').attr('src', "./img/trash-open.png");
                 $('.delete').css('background-color', '#a70f19')
             },
             eventDragStop: (event,jsEvent) => {
@@ -113,12 +131,33 @@ class EventManager {
                 if (jsEvent.pageX >= x1 && jsEvent.pageX<= x2 &&
                     jsEvent.pageY >= y1 && jsEvent.pageY <= y2) {
                         this.eliminarEvento(event)
-                        $('.calendario').fullCalendar('removeEvents', event.id);
+                        $('.calendario').fullCalendar('removeEvents', event._id);
                     }
                 }
             })
         }
-    
+        
+        actualizarEvento(evento) {
+            let url = this.urlBase + "/update_event"
+            let id = evento.id,
+                start = moment(evento.start).format('YYYY-MM-DD HH:mm:ss'),
+                end = evento.end != null ? moment(evento.end).format('YYYY-MM-DD HH:mm:ss'): evento.end;
+            
+            let ev = {
+                id: id,
+                start: start,
+                end: end
+            }
+            $.post(url, ev, (response) => {
+                if(response!="session"){
+                    alert(response)
+                }else{
+                    alert("Debe iniciar session")
+                    window.location.href = "http://localhost:3000/index.html"
+                }
+            })
+        }
+
         cerrarSession(){
             $('.logout-container').on('click', function(event) {
                 $.get('/logout', function(response) {

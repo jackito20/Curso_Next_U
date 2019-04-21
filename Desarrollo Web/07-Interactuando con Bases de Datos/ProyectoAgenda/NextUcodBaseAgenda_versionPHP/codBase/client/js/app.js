@@ -136,7 +136,6 @@ class EventsManager {
         success: (data) =>{
           if (data.msg=="OK") {
             alert('Se ha eliminado el evento exitosamente');
-            alert(data.msg);
           }else {
             alert(data.msg)
           }

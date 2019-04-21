@@ -26,87 +26,81 @@ Router.get('/logout', function(req, res) {
 // Agregar a un evento
 Router.post('/events/new', function(req, res) {
     if(req.session.usuario){
+        let id = Math.floor(Math.random() * 50); 
         let event = new Events({
-            id: Math.floor(Math.random() * 50),
-            titulo: req.body.title,
-            fecha_inicio: req.body.start,
-            fecha_fin: req.body.end,
-            usuario: req.session.usuario
+            id: id,
+            title: req.body.title,
+            start: req.body.start,
+            end: req.body.end,
+            user: req.session.usuario
         })
         event.save(function(error) {
             if (error) {
                 res.status(500)
                 res.json(error)
             }
-            res.send("Registro guardado")
+            Events.findOne({id: id}).exec(function(err, docs) {
+                if (err) {
+                    res.status(500)
+                    res.json(err)
+                }
+                res.json(docs)
+            })
+            //res.send("Registro guardado")
         })
     }else{
-        res.send("No se ha iniciado session")
+        res.send("session")
     }
 })
 
-//Obtener todos los usuarios
-/*Router.get('/all', function(req, res) {
-    Users.find({}).exec(function(err, docs) {
-        if (err) {
-            res.status(500)
-            res.json(err)
-        }
-        res.json(docs)
-    })
+//Obtener todos eventos de un usuario
+Router.get('/events/all', function(req, res) {
+    if(req.session.usuario){
+        Events.find({user: req.session.usuario}).exec(function(err, docs) {
+            if (err) {
+                res.status(500)
+                res.json(err)
+            }
+            res.json(docs)
+        })
+    }else{
+        res.json("session")   
+    }
 })
 
-// Obtener un usuario por su id
-Router.get('/', function(req, res) {
-    let nombre = req.query.nombre
-    Users.findOne({nombres: nombre}).exec(function(err, doc){
-        if (err) {
-            res.status(500)
-            res.json(err)
-        }
-        res.json(doc)
-    })
+// Eliminar un evento por su id
+Router.post('/events/delete/:id', function(req, res) {
+    if(req.session.usuario){
+        let eid = req.params.id
+        Events.deleteOne({id: eid}, function(error) {
+            if(error) {
+                res.status(500)
+                res.json(error)
+            }
+            res.send("Registro eliminado")
+        })
+    }else{
+        res.send("session")
+    }
 })
 
-// Agregar a un usuario
-Router.post('/new', function(req, res) {
-    let user = new Users({
-        userId: Math.floor(Math.random() * 50),
-        nombres: req.body.nombres,
-        apellidos: req.body.apellidos,
-        edad: req.body.edad,
-        sexo: req.body.sexo,
-        estado: "Activo"
-    })
-    user.save(function(error) {
-        if (error) {
-            res.status(500)
-            res.json(error)
-        }
-        res.send("Registro guardado")
-    })
+
+// Actualizar a un evento
+Router.post('/events/update_event', function(req, res) {
+    if(req.session.usuario){
+        let eid = req.body.id,
+            start = req.body.start,
+            end = req.body.end;
+        Events.updateOne({id: eid}, { start : start, end : end } , function(error) {
+            if(error) {
+                res.status(500)
+                res.json(error)
+            }
+            res.json("Registro actualizado")
+        })
+    }else{
+        res.json("session")
+    }
 })
 
-// Eliminar un usuario por su id
-Router.get('/delete/:id', function(req, res) {
-    let uid = req.params.id
-    Users.remove({userId: uid}, function(error) {
-        if(error) {
-            res.status(500)
-            res.json(error)
-        }
-        res.send("Registro eliminado")
-    })
-})
-
-// Inactivar un usuario por su id
-Router.post('/inactive/:id', function(req, res) {
-
-})
-
-// Activar un usuario por su id
-Router.post('/active/:id', function(req, res) {
-
-})
-*/
 module.exports = Router
