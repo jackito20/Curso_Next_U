@@ -5,15 +5,20 @@ const Events = require('./eventModel.js')
 
 // Validar login de usuario
 Router.post('/login', function(req, res) {
-    let mail = req.query.user
-    let pass = req.query.pass
-    Users.findOne({mail: mail, pass: pass}).exec(function(err, doc){
+    let mail = req.body.user
+    let pass = req.body.pass
+    Users.findOne({email: mail, password: pass}).exec(function(err, doc){
         if (err) {
             res.status(500)
             res.json(err)
         }
-        req.session.usuario = doc.id;
-        res.json("Validado")
+        if(doc){
+            req.session.usuario = doc.id;
+            res.json("Validado")
+        }else{
+            res.json("Usuario o contraseña invalido")
+        }
+        
     })
 })
 
