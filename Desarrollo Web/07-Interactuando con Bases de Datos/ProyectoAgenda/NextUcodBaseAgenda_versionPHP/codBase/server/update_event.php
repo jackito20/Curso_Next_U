@@ -8,9 +8,11 @@ if(isset($_SESSION["usuario"])){
 
     if($response["conexion"] == "OK"){
         $data["fecha_inicio"] = "'".$_POST["start_date"]."'";
-        $data["fecha_fin"] = "'".$_POST["end_date"]."'";
-        $data["hora_fin"] = "'".$_POST["end_hour"]."'";
-        $data["hora_inicio"] = "'".$_POST["start_hour"]."'";
+        if(isset($_POST["end_date"])){
+            $data["fecha_fin"] = "'".$_POST["end_date"]."'";
+            $data["hora_fin"] = "'".$_POST["end_hour"]."'";
+            $data["hora_inicio"] = "'".$_POST["start_hour"]."'";   
+        }
         
         $condicion = "id = ".$_POST["id"];
         if($res = $conexion->actualizarRegistro('eventos', $data, $condicion)){

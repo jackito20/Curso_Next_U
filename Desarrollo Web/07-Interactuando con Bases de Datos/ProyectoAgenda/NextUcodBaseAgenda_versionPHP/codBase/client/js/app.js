@@ -18,7 +18,6 @@ class EventsManager {
           type: 'GET',
           success: (data) =>{
             if (data.msg=="OK") {
-              console.log(data.eventos);
               this.poblarCalendario(data.eventos)
             }else {
               alert(data.msg)
@@ -100,14 +99,16 @@ class EventsManager {
               $('.calendario').fullCalendar('renderEvent', {
                 title: $('#titulo').val(),
                 start: $('#start_date').val(),
-                allDay: true
+                allDay: true,
+                id: data.data.id
               })
             }else {
               $('.calendario').fullCalendar('renderEvent', {
                 title: $('#titulo').val(),
                 start: $('#start_date').val()+" "+$('#start_hour').val(),
                 allDay: false,
-                end: $('#end_date').val()+" "+$('#end_hour').val()
+                end: $('#end_date').val()+" "+$('#end_hour').val(),
+                id: data.data.id
               })
             }
           }else {
@@ -158,16 +159,19 @@ class EventsManager {
             start_hour,
             end_hour
 
+            
         start_date = start.substr(0,10)
-        end_date = end.substr(0,10)
+        end_date = end != "Invalid date" ? end.substr(0,10) : null,
         start_hour = start.substr(11,8)
         end_hour = end.substr(11,8)
         
         form_data.append('id', id)
         form_data.append('start_date', start_date)
-        form_data.append('end_date', end_date)
-        form_data.append('start_hour', start_hour)
-        form_data.append('end_hour', end_hour)
+        if(end_date){
+          form_data.append('end_date', end_date)
+          form_data.append('end_hour', end_hour)
+          form_data.append('start_hour', start_hour)
+        }
 
         $.ajax({
           url: '../server/update_event.php',

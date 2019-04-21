@@ -17,10 +17,28 @@ if(isset($_SESSION["usuario"])){
             $data["hora_inicio"] = $_POST["start_hour"];
         }
         $data["usuario_id"] = $_SESSION["usuario"];
-        $response["data"] =$data;
+        
+        if($res = $conexion->insertData('eventos', $data)){
+            
+            $tabla=["eventos"];
+            $campos =  ["*"];
+            $condicion = "WHERE id = '".$conexion->getConexion()->insert_id."'";
+            if($res = $conexion->consultar($tabla,$campos, $condicion)){
+                $response['msg']="OK";
+                
+                $fila = $res->fetch_assoc();
 
-        if($conexion->insertData('eventos', $data)){
-            $response['msg']="OK";
+                $event["id"] = $fila["id"];
+                $event["title"] = $fila["titulo"];
+                $event["start"] = $fila["fecha_inicio"];
+                $event["allDay"] = $fila["dia_completo"]==1?true:false;
+                if(!$event["allDay"]){
+                    $event["start"] .=" ".$fila["hora_inicio"];
+                    $event["end"] = $fila["fecha_fin"]." ".$fila["hora_fin"];
+                }
+
+                $response['data'] = $event;
+            }
         }else {
             $response['msg']= "Hubo un error y los datos no han sido cargados";
         }
