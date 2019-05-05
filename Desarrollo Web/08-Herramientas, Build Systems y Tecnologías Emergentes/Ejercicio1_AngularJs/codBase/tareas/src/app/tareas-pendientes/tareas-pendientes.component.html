@@ -1,9 +1,16 @@
 <div class="card">
-  <div class="card-body">
-    <h5 class="card-title">Tareas Pendientes</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  <div class="card-content">
+    <span class="card-title light-blue-text accent-2">Tareas Pendientes</span>
+    <div>
+      <ul class="collection">
+        <a *ngFor="let tarea of tareas" class="collection-item avatar">
+          <i class="material-icons circle light-blue accent-2">check_circle</i>
+          <span class="title light-blue-text accent-2">{{tarea}}</span>
+        </a>
+      </ul>
+    </div>
   </div>
-  <div class="card-footer">
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+  <div class="card-action light-blue accent-2 right-align">
+    <a class="btn-floating btn-large waves-effect waves-light white"><i class="material-icons grey-text lighten-1">add</i></a>
   </div>
 </div>

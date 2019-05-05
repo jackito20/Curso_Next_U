@@ -1,0 +1,13 @@
+.card-content{
+    min-height: 32rem;
+}
+
+.collection-item{
+    min-height: 4.3rem !important;
+    cursor: pointer;
+}
+
+.card-title{
+    padding: 0.5rem 0;
+    font-weight: 400;
+}

@@ -1,3 +1,13 @@
-<p>
-  tareas-hoy works!
-</p>
+<div class="card">
+  <div class="card-content">
+    <span class="card-title grey-text text-darken-2">Tareas para hoy <i class="material-icons today-icon right">event</i></span>
+    <div>
+      <ul class="collection">
+        <a *ngFor="let tarea of tareas" class="collection-item">
+            <span class="title grey-text text-darken-2">{{tarea}}</span>
+            <i class="material-icons white grey-text text-darken-2 left">star</i>
+        </a>
+      </ul>
+    </div>
+  </div>
+</div>

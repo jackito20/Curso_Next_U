@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TareasPendientesComponent implements OnInit {
 
+  tareas: string[];
+
   constructor() { }
 
   ngOnInit() {
+    this.tareas = [
+      "Recoger Libros",
+      "Firmar Autorizacion",
+      "Cita con Maria"
+    ];
   }
 
 }

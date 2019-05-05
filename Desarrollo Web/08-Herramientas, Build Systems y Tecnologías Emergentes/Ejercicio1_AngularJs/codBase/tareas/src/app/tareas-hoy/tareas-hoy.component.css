@@ -1,0 +1,13 @@
+.card-content{
+    min-height: 16rem;
+}
+
+a{
+    min-height: 3rem !important;
+    cursor: pointer;
+}
+
+.card-title{
+    padding: 0.5rem 0;
+    font-weight: 400;
+}
