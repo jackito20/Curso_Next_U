@@ -14,6 +14,8 @@ import { NuevaTareaComponent } from './nueva-tarea/nueva-tarea.component';
 import { TareasRoutingModule } from './app-routing.module';
 import { VerGrupoComponent } from './ver-grupo/ver-grupo.component';
 
+import { NgDatepickerModule } from 'ng2-datepicker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { VerGrupoComponent } from './ver-grupo/ver-grupo.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    TareasRoutingModule
+    TareasRoutingModule,
+    NgDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
